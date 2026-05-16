@@ -29,18 +29,20 @@
 }
 
 body{
-  font-family:'Nunito',sans-serif;
-  background:#e4e8ef;
-  display:flex;align-items:center;justify-content:center;
-  min-height:100vh;padding:28px 20px;
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  margin:0;padding:0;
+  min-height:100vh;
+  overflow:hidden;
 }
 
-/* ── PHONE ── */
+/* ── PHONE (full screen) ── */
 .phone{
-  width:375px;height:812px;
-  background:var(--bg);border-radius:50px;
-  overflow:hidden;flex-shrink:0;position:relative;
-  box-shadow:0 0 0 9px #1c2130,0 0 0 11px #2a3244,0 32px 56px rgba(0,0,0,.4);
+  width:100vw;
+  height:100vh;
+  background:var(--bg);
+  overflow:hidden;
+  position:relative;
 }
 
 /* ── SCREENS ── */
@@ -97,7 +99,7 @@ body{
 .scroll::-webkit-scrollbar{display:none}
 
 /* ── STATUS BAR ── */
-.sb{display:flex;justify-content:space-between;align-items:center;padding:14px 22px 0;flex-shrink:0}
+.sb{display:none !important}
 .sb-t{font-size:14px;font-weight:700}
 .sb-i{font-size:11px;display:flex;gap:4px}
 
