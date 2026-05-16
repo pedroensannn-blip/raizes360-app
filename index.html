@@ -55,7 +55,44 @@ body{
 .screen.active{opacity:1;pointer-events:all;transform:translateX(0)}
 .screen.slide-left{transform:translateX(-40px)}
 
-/* ── SCROLL ── */
+/* ── LOGIN ── */
+.login-screen{position:absolute;inset:0;background:var(--white);z-index:60;display:flex;flex-direction:column;overflow:hidden}
+.login-hero{background:linear-gradient(155deg,#1d3461 0%,var(--purple) 60%,var(--mint-dark) 100%);padding:52px 32px 36px;flex-shrink:0;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center}
+.login-hero::before{content:'';position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06);top:-60px;right:-60px}
+.login-hero::after{content:'';position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.04);bottom:-40px;left:-30px}
+.login-logo{width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative}
+.login-logo svg{width:32px;height:32px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.login-brand{font-size:26px;font-weight:800;color:white;letter-spacing:-.4px;margin-bottom:4px;position:relative}
+.login-sub{font-size:13px;color:rgba(255,255,255,.6);position:relative}
+.login-body{flex:1;padding:28px 26px;display:flex;flex-direction:column;gap:16px;overflow-y:auto}
+.login-title{font-size:20px;font-weight:800;color:var(--n800);margin-bottom:2px}
+.login-desc{font-size:13px;color:var(--n400);margin-bottom:4px}
+.lf{display:flex;flex-direction:column;gap:6px}
+.lf-label{font-size:12px;font-weight:600;color:var(--n600);letter-spacing:.02em}
+.lf-input{background:var(--n50);border:1.5px solid var(--n100);border-radius:14px;padding:13px 16px;font-size:14px;font-family:'Inter',sans-serif;color:var(--n700);outline:none;width:100%;transition:border .15s,background .15s}
+.lf-input:focus{border-color:var(--mint);background:var(--white)}
+.lf-input::placeholder{color:var(--n300)}
+.lf-input.error{border-color:var(--red);background:var(--red-light)}
+.login-btn{width:100%;padding:14px;border-radius:var(--r-pill);background:var(--mint);color:white;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 4px 16px rgba(45,204,180,.3);transition:opacity .15s,transform .1s;margin-top:4px}
+.login-btn:hover{opacity:.9}
+.login-btn:active{transform:scale(.98)}
+.login-btn:disabled{opacity:.5;cursor:not-allowed}
+.login-error{background:var(--red-light);border:1px solid rgba(232,69,60,.2);border-radius:12px;padding:11px 14px;font-size:12px;color:var(--red);font-weight:500;display:none}
+.login-error.show{display:block}
+.login-footer{font-size:11px;color:var(--n400);text-align:center;margin-top:auto;padding-top:16px}
+.first-access-banner{background:var(--orange-light);border:1px solid rgba(240,146,74,.2);border-radius:12px;padding:11px 14px;font-size:12px;color:var(--orange);font-weight:500;display:none;align-items:flex-start;gap:8px}
+.first-access-banner.show{display:flex}
+.first-access-banner svg{width:16px;height:16px;stroke:var(--orange);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0;margin-top:1px}
+.new-pass-field{display:none;flex-direction:column;gap:6px}
+.new-pass-field.show{display:flex}
+
+/* ── PRIMEIRO ACESSO (trocar senha) ── */
+.change-pass-overlay{position:absolute;inset:0;background:var(--white);z-index:61;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.change-pass-overlay.open{transform:translateY(0)}
+.cp-header{background:linear-gradient(135deg,var(--mint-dark),var(--mint));padding:52px 26px 22px;flex-shrink:0;text-align:center}
+.cp-title{font-size:20px;font-weight:800;color:white;margin-bottom:4px}
+.cp-sub{font-size:12px;color:rgba(255,255,255,.65)}
+.cp-body{flex:1;padding:24px 26px;display:flex;flex-direction:column;gap:14px;overflow-y:auto}
 .scroll{flex:1;overflow-y:auto;scrollbar-width:none}
 .scroll::-webkit-scrollbar{display:none}
 
@@ -611,8 +648,96 @@ body{
 <body>
 <div class="phone">
 
+<!-- ═══ TELA: LOGIN ═══ -->
+<div class="login-screen" id="s-login">
+
+  <div class="login-hero">
+    <div class="sb" style="padding:0;position:relative;width:100%"><div class="sb-t" style="color:white">9:41</div><div class="sb-i" style="color:rgba(255,255,255,.7)">●●● ▲ ■</div></div>
+    <div style="margin-top:20px">
+      <div class="login-logo">
+        <svg viewBox="0 0 24 24"><path d="M12 2C9 6 7 9 7 12a5 5 0 0 0 10 0c0-3-2-6-5-10z"/></svg>
+      </div>
+      <div class="login-brand">Raízes 360</div>
+      <div class="login-sub">Medicina do Estilo de Vida</div>
+    </div>
+  </div>
+
+  <div class="login-body">
+    <div>
+      <div class="login-title">Bem-vinda de volta</div>
+      <div class="login-desc">Entre com as credenciais enviadas pelo seu nutricionista</div>
+    </div>
+
+    <!-- Banner primeiro acesso -->
+    <div class="first-access-banner" id="first-access-banner">
+      <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="14" x2="10" y2="14"/></svg>
+      <span>Este é seu primeiro acesso. Você precisará criar uma nova senha após entrar.</span>
+    </div>
+
+    <!-- Erro de login -->
+    <div class="login-error" id="login-error">E-mail ou senha incorretos. Verifique os dados enviados pelo seu nutricionista.</div>
+
+    <!-- Campos -->
+    <div class="lf">
+      <div class="lf-label">E-mail</div>
+      <input class="lf-input" id="login-email" type="email" placeholder="seuemail@email.com" autocomplete="email">
+    </div>
+
+    <div class="lf">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div class="lf-label">Senha</div>
+        <div style="font-size:11px;font-weight:600;color:var(--mint-dark);cursor:pointer">Esqueci a senha</div>
+      </div>
+      <input class="lf-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+    </div>
+
+    <button class="login-btn" id="login-btn" onclick="doLogin()">Entrar</button>
+
+    <div class="login-footer">
+      Problemas para acessar? Fale com seu nutricionista.<br>
+      <span style="color:var(--mint-dark);font-weight:600">Juan Carlos · juan@raizes360.com</span>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ OVERLAY: TROCAR SENHA (primeiro acesso) ═══ -->
+<div class="change-pass-overlay" id="change-pass-overlay">
+  <div class="cp-header">
+    <div class="sb" style="padding:0;position:relative"><div class="sb-t" style="color:white">9:41</div><div class="sb-i" style="color:rgba(255,255,255,.7)">●●● ▲ ■</div></div>
+    <div style="margin-top:14px">
+      <div class="cp-title">Crie sua senha</div>
+      <div class="cp-sub">Esta é sua senha definitiva de acesso ao app</div>
+    </div>
+  </div>
+  <div class="cp-body">
+    <div style="background:var(--mint-light);border-radius:14px;padding:13px 15px;font-size:12px;color:var(--mint-dark);line-height:1.5">
+      Olá, <strong id="cp-name">Ana Beatriz</strong>! Por segurança, crie uma senha pessoal para substituir a senha provisória enviada pelo nutricionista.
+    </div>
+    <div class="lf">
+      <div class="lf-label">Nova senha</div>
+      <input class="lf-input" id="new-pass1" type="password" placeholder="Mínimo 8 caracteres">
+    </div>
+    <div class="lf">
+      <div class="lf-label">Confirmar nova senha</div>
+      <input class="lf-input" id="new-pass2" type="password" placeholder="Repita a senha">
+    </div>
+    <div class="login-error" id="cp-error" style="display:none"></div>
+
+    <!-- Requisitos de senha -->
+    <div style="background:var(--n50);border-radius:12px;padding:12px 14px">
+      <div style="font-size:11px;font-weight:700;color:var(--n400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px">A senha deve ter</div>
+      <div id="req-len"  style="font-size:12px;color:var(--n300);margin-bottom:4px;display:flex;align-items:center;gap:6px"><svg viewBox="0 0 14 14" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round"><circle cx="7" cy="7" r="6"/></svg>Mínimo 8 caracteres</div>
+      <div id="req-upper" style="font-size:12px;color:var(--n300);margin-bottom:4px;display:flex;align-items:center;gap:6px"><svg viewBox="0 0 14 14" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round"><circle cx="7" cy="7" r="6"/></svg>Uma letra maiúscula</div>
+      <div id="req-num"  style="font-size:12px;color:var(--n300);display:flex;align-items:center;gap:6px"><svg viewBox="0 0 14 14" style="width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round"><circle cx="7" cy="7" r="6"/></svg>Um número</div>
+    </div>
+
+    <button class="login-btn" onclick="saveNewPassword()" style="margin-top:8px">Salvar nova senha e entrar</button>
+  </div>
+</div>
+
 <!-- ═══ TELA: PLANNER ═══ -->
-<div class="screen active" id="s-planner">
+<div class="screen" id="s-planner">
   <div class="pl-hero">
     <div class="sb" style="padding:0;position:relative"><div class="sb-t" style="color:white">9:41</div><div class="sb-i" style="color:rgba(255,255,255,.7)">●●● ▲ ■</div></div>
     <div class="pl-top" style="margin-top:10px">
@@ -2040,45 +2165,120 @@ const colors = {
   mente:'#e8453c', social:'#2563eb', vicios:'#d63384',
 };
 
+// ── LOGIN ───────────────────────────────────────
+const DEMO_USERS = [
+  { email: 'ana@raizes360.com',   password: 'Raizes@2026', name: 'Ana Beatriz', firstAccess: true  },
+  { email: 'carla@raizes360.com', password: 'Carla@2026',  name: 'Carla Mendonça', firstAccess: false },
+];
+let currentUser = null;
+
+function doLogin() {
+  const email = document.getElementById('login-email').value.trim().toLowerCase();
+  const pass  = document.getElementById('login-pass').value;
+  const btn   = document.getElementById('login-btn');
+  const err   = document.getElementById('login-error');
+  err.classList.remove('show');
+  document.getElementById('login-email').classList.remove('error');
+  document.getElementById('login-pass').classList.remove('error');
+  if (!email || !pass) {
+    err.textContent = 'Preencha e-mail e senha para continuar.';
+    err.classList.add('show'); return;
+  }
+  btn.disabled = true; btn.textContent = 'Entrando...';
+  setTimeout(() => {
+    const user = DEMO_USERS.find(u => u.email === email && u.password === pass);
+    if (!user) {
+      err.textContent = 'E-mail ou senha incorretos. Verifique os dados enviados pelo seu nutricionista.';
+      err.classList.add('show');
+      document.getElementById('login-email').classList.add('error');
+      document.getElementById('login-pass').classList.add('error');
+      btn.disabled = false; btn.textContent = 'Entrar'; return;
+    }
+    currentUser = user;
+    btn.disabled = false; btn.textContent = 'Entrar';
+    if (user.firstAccess) {
+      document.getElementById('cp-name').textContent = user.name;
+      document.getElementById('change-pass-overlay').classList.add('open');
+    } else { enterApp(user.name); }
+  }, 900);
+}
+
+function saveNewPassword() {
+  const p1  = document.getElementById('new-pass1').value;
+  const p2  = document.getElementById('new-pass2').value;
+  const err = document.getElementById('cp-error');
+  err.style.display = 'none';
+  if (p1.length < 8)       { err.textContent = 'Mínimo 8 caracteres.'; err.style.display='block'; return; }
+  if (!/[A-Z]/.test(p1))   { err.textContent = 'Inclua uma letra maiúscula.'; err.style.display='block'; return; }
+  if (!/[0-9]/.test(p1))   { err.textContent = 'Inclua um número.'; err.style.display='block'; return; }
+  if (p1 !== p2)            { err.textContent = 'As senhas não coincidem.'; err.style.display='block'; return; }
+  document.getElementById('change-pass-overlay').classList.remove('open');
+  enterApp(currentUser.name);
+}
+
+function setReq(id, ok) {
+  const el = document.getElementById(id); if (!el) return;
+  el.style.color = ok ? 'var(--mint-dark)' : 'var(--n300)';
+  el.querySelector('svg').innerHTML = ok ? '<polyline points="2,7 5,10.5 12,3"/>' : '<circle cx="7" cy="7" r="6"/>';
+}
+
+function enterApp(name) {
+  document.getElementById('s-login').style.display = 'none';
+  document.getElementById('s-planner').classList.add('active');
+  appHistory = ['s-planner'];
+  const nameEl = document.querySelector('.pl-name');
+  if (nameEl && name) nameEl.textContent = name.split(' ')[0];
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.getElementById('new-pass1')?.addEventListener('input', function() {
+    setReq('req-len', this.value.length >= 8);
+    setReq('req-upper', /[A-Z]/.test(this.value));
+    setReq('req-num', /[0-9]/.test(this.value));
+  });
+  document.getElementById('login-pass')?.addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
+  document.getElementById('login-email')?.addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('login-pass')?.focus(); });
+});
+
 // ── NAVIGATION ─────────────────────────
-let history = ['s-planner'];
+let appHistory = ['s-planner'];
 
 function goTo(id) {
-  const from = history[history.length - 1];
+  const from = appHistory[appHistory.length - 1];
   const fromEl = document.getElementById(from);
   const toEl   = document.getElementById(id);
   fromEl.classList.add('slide-left');
   fromEl.classList.remove('active');
   toEl.classList.remove('slide-left');
   toEl.classList.add('active');
-  history.push(id);
+  appHistory.push(id);
   const scroll = toEl.querySelector('.scroll');
   if(scroll) scroll.scrollTop = 0;
   toggleFAB(id);
 }
 
 function goBack() {
-  if(history.length < 2) return;
-  const to   = history[history.length - 2];
-  const from = history[history.length - 1];
+  if(appHistory.length < 2) return;
+  const to   = appHistory[appHistory.length - 2];
+  const from = appHistory[appHistory.length - 1];
   const fromEl = document.getElementById(from);
   const toEl   = document.getElementById(to);
   fromEl.classList.remove('active');
   toEl.classList.remove('slide-left');
   toEl.classList.add('active');
-  history.pop();
+  appHistory.pop();
   toggleFAB(to);
 }
 
 function navTo(id, idx) {
-  const cur = history[history.length - 1];
+  const cur = appHistory[appHistory.length - 1];
   if(cur === id) return;
   const curEl = document.getElementById(cur);
   const toEl  = document.getElementById(id);
   curEl.classList.remove('active','slide-left');
   toEl.classList.remove('slide-left');
   toEl.classList.add('active');
-  history = [id];
+  appHistory = [id];
   const scroll = toEl.querySelector('.scroll');
   if(scroll) scroll.scrollTop = 0;
   toggleFAB(id);
