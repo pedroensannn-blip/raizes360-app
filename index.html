@@ -2966,8 +2966,7 @@ async function buscarSubstituicoes() {
     return;
   }
 
-  const btn  = document.getElementById('sub-btn');
-  const icon = document.getElementById('sub-icon');
+  const btn = document.getElementById('sub-btn');
   btn.disabled = true;
   btn.innerHTML = `<svg class="spin" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0 1 6-6"/><path d="M16 10a6 6 0 0 1-6 6"/></svg>Buscando substituições...`;
   document.getElementById('sub-result').innerHTML = '';
@@ -2975,37 +2974,34 @@ async function buscarSubstituicoes() {
   try {
     const prompt = `Você é nutricionista especialista em Medicina do Estilo de Vida (MEV/ACLM).
 
-O paciente precisa substituir: **${subFoodAtual.nome}** (${subFoodAtual.qty}, ~${subFoodAtual.kcal})
+O paciente precisa substituir: ${subFoodAtual.nome} (${subFoodAtual.qty}, ~${subFoodAtual.kcal})
 
 Ingredientes disponíveis em casa: ${geladeira}
 
 Gere 3 sugestões de substituição USANDO APENAS os ingredientes disponíveis.
-Para cada sugestão, retorne um JSON com este formato exato (sem markdown, só o array):
-[
-  {
-    "nome": "Nome do substituto",
-    "quantidade": "Quantidade equivalente",
-    "kcal": "Calorias aproximadas",
-    "similaridade": "Alta|Média|Baixa",
-    "motivo": "Por que é uma boa substituição nutricional (1-2 frases simples)"
-  }
-]
+Responda SOMENTE com um array JSON, sem markdown, sem explicação fora do JSON:
+[{"nome":"...","quantidade":"...","kcal":"...","similaridade":"Alta","motivo":"..."}]
 
-Regras importantes:
-- Use apenas ingredientes que o paciente listou
-- Mantenha o valor calórico e proteico similares ao original
-- Explique em linguagem simples, sem jargão técnico
-- Se não for possível substituir com os ingredientes disponíveis, retorne array vazio []`;
+Regras:
+- Use apenas o que o paciente listou
+- Mantenha valor calórico e proteico similares
+- Linguagem simples
+- Se impossível, retorne []`;
 
     const resp = await fetch('https://api.anthropic.com/v1/messages', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         model: 'claude-sonnet-4-20250514',
-        max_tokens: 1000,
+        max_tokens: 800,
         messages: [{ role: 'user', content: prompt }]
       })
     });
+
+    if (!resp.ok) {
+      // CORS ou sem API key — usa modo offline com sugestões locais
+      throw new Error('offline');
+    }
 
     const data = await resp.json();
     const text = data.content?.[0]?.text || '';
@@ -3047,12 +3043,77 @@ Regras importantes:
     }
 
   } catch(err) {
-    document.getElementById('sub-result').innerHTML =
-      `<div class="sub-error">Erro ao conectar com a IA. Verifique sua conexão e tente novamente.<br><small>${err.message}</small></div>`;
+    // Se for erro de CORS/rede, usa sugestões locais baseadas no alimento
+    if (err.message === 'offline' || err.message.includes('fetch') || err.message.includes('CORS') || err.message.includes('Failed')) {
+      const fallback = gerarSubstituicoesOffline();
+      renderSubstituicoes(fallback);
+    } else {
+      document.getElementById('sub-result').innerHTML =
+        `<div class="sub-error">Não foi possível buscar sugestões agora. Tente novamente.<br><small style="color:var(--red);opacity:.7">${err.message}</small></div>`;
+    }
   }
 
   btn.disabled = false;
   btn.innerHTML = `<svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zM10 6v4l3 3"/></svg>Buscar novamente`;
+}
+
+
+// Fallback offline — usa base local de substituições comuns
+function gerarSubstituicoesOffline() {
+  const geladeira = document.getElementById('sub-geladeira').value.toLowerCase();
+  const nome = subFoodAtual.nome.toLowerCase();
+  const base = {
+    'pao':        [{nome:'Tapioca',quantidade:'2 unidades médias',kcal:'110 kcal',similaridade:'Alta',motivo:'Carboidrato similar, sem glúten, muito usado na culinária brasileira saudável.'},
+                   {nome:'Aveia cozida',quantidade:'4 colheres de sopa',kcal:'120 kcal',similaridade:'Alta',motivo:'Rica em fibra solúvel, ótima para saciedade e controle glicêmico.'},
+                   {nome:'Batata-doce cozida',quantidade:'1 unidade pequena',kcal:'100 kcal',similaridade:'Média',motivo:'Carboidrato de baixo índice glicêmico, excelente para energia sustentada.'}],
+    'arroz':      [{nome:'Quinoa cozida',quantidade:'4 colheres',kcal:'130 kcal',similaridade:'Alta',motivo:'Proteína completa e carboidrato complexo, ideal para MEV.'},
+                   {nome:'Batata-doce',quantidade:'1 unidade média',kcal:'115 kcal',similaridade:'Alta',motivo:'Baixo IG, fonte de fibras e vitaminas do complexo B.'},
+                   {nome:'Mandioca cozida',quantidade:'3 colheres',kcal:'120 kcal',similaridade:'Média',motivo:'Carboidrato energético, fácil digestão.'}],
+    'frango':     [{nome:'Ovo mexido',quantidade:'3 ovos',kcal:'150 kcal',similaridade:'Alta',motivo:'Proteína de alta qualidade, mesma quantidade proteica que o frango.'},
+                   {nome:'Atum em água',quantidade:'1 lata pequena (80g)',kcal:'90 kcal',similaridade:'Alta',motivo:'Proteína magra, rico em ômega-3, ótimo para MEV.'},
+                   {nome:'Queijo minas',quantidade:'2 fatias',kcal:'120 kcal',similaridade:'Média',motivo:'Proteína e cálcio, ideal quando não há carne disponível.'}],
+    'ovo':        [{nome:'Iogurte grego',quantidade:'1 pote (170g)',kcal:'130 kcal',similaridade:'Alta',motivo:'Proteína similar, além de probióticos benéficos.'},
+                   {nome:'Queijo minas',quantidade:'2 fatias',kcal:'100 kcal',similaridade:'Média',motivo:'Boa fonte de proteína e cálcio para o café da manhã.'},
+                   {nome:'Atum',quantidade:'1/2 lata',kcal:'90 kcal',similaridade:'Alta',motivo:'Proteína magra de qualidade equivalente.'}],
+    'default':    [{nome:'Iogurte natural',quantidade:'1 pote (170g)',kcal:'100 kcal',similaridade:'Média',motivo:'Proteína e probióticos, boa opção versátil para substituições.'},
+                   {nome:'Ovo cozido',quantidade:'2 unidades',kcal:'140 kcal',similaridade:'Média',motivo:'Proteína completa e de fácil preparo, presente na maioria das casas.'},
+                   {nome:'Fruta disponível',quantidade:'1 unidade média',kcal:'80 kcal',similaridade:'Baixa',motivo:'Quando não há opção equivalente, priorize frutas para manter a qualidade nutricional.'}]
+  };
+  // Encontra a chave mais próxima
+  const key = Object.keys(base).find(k => nome.includes(k)) || 'default';
+  return base[key];
+}
+
+function renderSubstituicoes(sugestoes) {
+  if (!sugestoes || !sugestoes.length) {
+    document.getElementById('sub-result').innerHTML =
+      '<div class="sub-error">Não foi possível encontrar substituições. Tente adicionar mais ingredientes.</div>';
+    return;
+  }
+  const cores = {Alta:'var(--mint-dark)', Média:'var(--orange)', Baixa:'var(--n400)'};
+  document.getElementById('sub-result').innerHTML =
+    `<div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
+       <div style="font-size:11px;font-weight:700;color:var(--n400);text-transform:uppercase;letter-spacing:.06em">${sugestoes.length} sugestões encontradas</div>
+     </div>` +
+    sugestoes.map((s,i) => `
+      <div class="sub-card" id="sub-card-${i}">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px">
+          <div>
+            <div class="sub-card-name">${s.nome}</div>
+            <div class="sub-card-qty">${s.quantidade}</div>
+            <div class="sub-card-kcal">~${s.kcal}</div>
+          </div>
+          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">
+            <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;background:${cores[s.similaridade]||'var(--n400)'}22;color:${cores[s.similaridade]||'var(--n400)'}">
+              Similaridade ${s.similaridade||'Média'}
+            </span>
+            <button class="sub-card-apply" onclick="aplicarSubstituicao(${i},'${s.nome.replace(/'/g,"\'")}','${s.quantidade.replace(/'/g,"\'")}','${s.kcal.replace(/'/g,"\'")}')">
+              Usar esta ✓
+            </button>
+          </div>
+        </div>
+        <div class="sub-card-why">💡 ${s.motivo}</div>
+      </div>`).join('');
 }
 
 function aplicarSubstituicao(idx, nome, qty, kcal) {
