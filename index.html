@@ -378,214 +378,6 @@ body{
 .fr-sub:active{transform:scale(.96)}
 
 /* ── SUBSTITUTION SHEET ── */
-.sub-sheet{position:fixed;inset:0;z-index:200;display:flex;flex-direction:column;pointer-events:none}
-.sub-sheet.open{pointer-events:all}
-.sub-backdrop{position:absolute;inset:0;background:rgba(20,28,46,0);transition:background .3s}
-.sub-sheet.open .sub-backdrop{background:rgba(20,28,46,.55)}
-.sub-panel{position:absolute;bottom:0;left:0;right:0;background:var(--white);border-radius:22px 22px 0 0;padding:0 0 32px;transform:translateY(100%);transition:transform .35s cubic-bezier(.4,0,.2,1);max-height:88vh;display:flex;flex-direction:column}
-.sub-sheet.open .sub-panel{transform:translateY(0)}
-.sub-handle{width:36px;height:4px;border-radius:2px;background:var(--n200);margin:12px auto 0}
-.sub-header{padding:14px 22px 0;flex-shrink:0}
-.sub-title{font-size:16px;font-weight:800;color:var(--n800);margin-bottom:3px}
-.sub-food{font-size:13px;color:var(--n500);margin-bottom:12px}
-.sub-geladeira-title{font-size:11px;font-weight:700;color:var(--n400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px}
-.sub-geladeira-input{width:100%;background:var(--n50);border:1.5px solid var(--n100);border-radius:12px;padding:10px 14px;font-size:13px;font-family:'Nunito',sans-serif;color:var(--n700);outline:none;resize:none;min-height:70px;line-height:1.5;transition:border .15s}
-.sub-geladeira-input:focus{border-color:var(--mint);background:var(--white)}
-.sub-ia-btn{width:100%;padding:13px;border-radius:var(--r-pill);background:linear-gradient(135deg,var(--mint-dark),var(--mint));color:white;font-size:14px;font-weight:800;border:none;cursor:pointer;font-family:'Nunito',sans-serif;display:flex;align-items:center;justify-content:center;gap:8px;box-shadow:0 4px 16px rgba(45,204,180,.3);transition:opacity .15s;margin-top:10px}
-.sub-ia-btn:active{opacity:.88}
-.sub-ia-btn svg{width:16px;height:16px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round}
-.sub-loading{display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px;gap:10px}
-.sub-spinner{width:36px;height:36px;border:3px solid var(--mint-light);border-top-color:var(--mint);border-radius:50%;animation:spin .8s linear infinite}
-@keyframes spin{to{transform:rotate(360deg)}}
-.sub-loading-txt{font-size:13px;font-weight:600;color:var(--n500)}
-.sub-results{flex:1;overflow-y:auto;padding:0 22px}
-.sub-card{background:var(--n50);border:1.5px solid var(--n100);border-radius:16px;padding:14px;margin-bottom:10px;transition:all .15s}
-.sub-card:active{background:var(--mint-light);border-color:var(--mint)}
-.sub-card-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
-.sub-card-ico{width:38px;height:38px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.sub-card-name{font-size:14px;font-weight:800;color:var(--n800);flex:1}
-.sub-card-match{font-size:10px;font-weight:700;padding:3px 8px;border-radius:var(--r-pill);flex-shrink:0}
-.sub-card-match.high{background:var(--mint-light);color:var(--mint-dark)}
-.sub-card-match.med{background:var(--orange-light);color:var(--orange)}
-.sub-card-qty{font-size:12px;color:var(--n500);margin-bottom:6px}
-.sub-card-why{font-size:12px;color:var(--n600);line-height:1.5;background:white;border-radius:8px;padding:8px 10px}
-.sub-card-macros{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap}
-.sub-macro{font-size:10px;font-weight:700;padding:2px 8px;border-radius:var(--r-pill)}
-.sub-apply-btn{width:100%;padding:10px;border-radius:var(--r-pill);background:var(--mint);color:white;font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Nunito',sans-serif;margin-top:8px}
-.sub-apply-btn:active{opacity:.88}
-.mc-obs{background:var(--mint-light);border-radius:10px;padding:8px 12px;margin-top:8px}
-.mc-obs-txt{font-size:11px;color:var(--mint-dark);font-style:italic}
-.mc-actions{display:flex;gap:8px;padding:11px 16px;background:var(--bg);border-top:1px solid var(--n50)}
-.mc-btn{flex:1;padding:10px;border-radius:var(--r-pill);font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Nunito',sans-serif;text-align:center}
-.mc-btn.primary{background:var(--mint);color:white;flex:2;box-shadow:0 3px 10px rgba(45,204,180,.25)}
-.mc-btn.secondary{background:var(--purple-light);color:var(--purple)}
-
-.photo-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 12px;box-shadow:var(--sh-xs);overflow:hidden}
-.photo-img{width:100%;height:100px;background:linear-gradient(135deg,#c8f0eb,#7dddd3);position:relative;display:flex;align-items:center;justify-content:center}
-.photo-img svg{width:32px;height:32px;stroke:rgba(255,255,255,.6);fill:none;stroke-width:1.5;stroke-linecap:round}
-.photo-lbl{position:absolute;bottom:8px;left:12px;background:rgba(0,0,0,.35);backdrop-filter:blur(4px);border-radius:var(--r-pill);padding:3px 10px;font-size:10px;font-weight:700;color:white}
-.photo-body{padding:12px 16px}
-.photo-row{display:flex;justify-content:space-between;margin-bottom:8px}
-.photo-meal{font-size:12px;font-weight:700;color:var(--n700)}
-.photo-time{font-size:11px;color:var(--n400)}
-.photo-comment{background:var(--mint-light);border-radius:12px;padding:10px 12px;display:flex;gap:8px}
-.photo-ava{width:26px;height:26px;border-radius:9px;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.photo-ava svg{width:13px;height:13px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round}
-.photo-ct{font-size:11px;color:var(--mint-dark);line-height:1.5}
-
-/* ════════════════════
-   EXERCICIO STYLES
-════════════════════ */
-.exerc-hero{background:linear-gradient(135deg,#5a3e8a,#7b5ea7);padding:52px 22px 18px;flex-shrink:0;position:relative;overflow:hidden}
-.exerc-hero::before{content:'';position:absolute;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.06);top:-20px;right:20px}
-.weekly-sum{background:rgba(255,255,255,.12);backdrop-filter:blur(8px);border-radius:16px;border:1px solid rgba(255,255,255,.2);display:grid;grid-template-columns:repeat(3,1fr)}
-.ws{text-align:center;padding:13px 8px}
-.ws+.ws{border-left:1px solid rgba(255,255,255,.15)}
-.ws-val{font-size:22px;font-weight:800;color:white;line-height:1;margin-bottom:2px}
-.ws-lbl{font-size:10px;font-weight:600;color:rgba(255,255,255,.8);text-transform:uppercase;letter-spacing:.05em}
-.trail-card{background:var(--n700);border-radius:var(--r-card);margin:14px 22px 12px;padding:18px;position:relative;overflow:hidden}
-.trail-card::before{content:'';position:absolute;width:120px;height:120px;border-radius:50%;background:var(--mint);opacity:.1;top:-30px;right:-20px}
-.trail-ey{font-size:11px;font-weight:700;color:var(--mint);letter-spacing:.08em;text-transform:uppercase;margin-bottom:5px}
-.trail-title{font-size:20px;font-weight:800;color:white;margin-bottom:3px;white-space:nowrap}
-.trail-sub{font-size:12px;color:rgba(255,255,255,.45);margin-bottom:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.trail-bar{height:5px;background:rgba(255,255,255,.15);border-radius:var(--r-pill);margin-bottom:6px}
-.trail-fill{height:100%;width:43%;background:var(--mint);border-radius:var(--r-pill)}
-.trail-pt{font-size:11px;color:rgba(255,255,255,.35);margin-bottom:14px}
-.trail-acts{display:flex;gap:8px}
-.trail-btn{padding:10px 18px;border-radius:var(--r-pill);font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Nunito',sans-serif}
-.trail-btn.pri{background:var(--mint);color:white}
-.trail-btn.gh{background:rgba(255,255,255,.1);color:rgba(255,255,255,.65);border:1px solid rgba(255,255,255,.2)}
-.hab-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 12px;box-shadow:var(--sh-xs);overflow:hidden}
-.hab-head{display:flex;justify-content:space-between;padding:13px 16px 11px;border-bottom:1px solid var(--n50)}
-.hab-title{font-size:13px;font-weight:700;color:var(--n700)}
-.hab-count{font-size:11px;color:var(--n400)}
-.hab-row{display:flex;align-items:center;gap:11px;padding:11px 16px;border-bottom:1px solid var(--n50)}
-.hab-row:last-child{border-bottom:none}
-.hab-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.hab-name{font-size:12px;font-weight:600;color:var(--n700);flex:1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hab-days{display:flex;gap:4px;flex-shrink:0}
-.hd{width:10px;height:10px;border-radius:50%;background:var(--n100)}
-.hd.d{background:var(--mint)}.hd.t{background:var(--orange);transform:scale(1.2)}
-.workout-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 10px;padding:13px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh-xs)}
-.wt-thumb{width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.wt-thumb svg{width:22px;height:22px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.wt-body{flex:1;min-width:0}
-.wt-title{font-size:13px;font-weight:700;color:var(--n700);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wt-meta{font-size:11px;color:var(--n400);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.wt-play{width:34px;height:34px;border-radius:50%;background:var(--mint);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.wt-play svg{width:12px;height:12px;fill:white;margin-left:2px}
-
-/* ════════════════════
-   COMUNIDADE STYLES
-════════════════════ */
-.com-hero{background:linear-gradient(135deg,#b88200,#e0a800);padding:52px 22px 18px;flex-shrink:0;position:relative;overflow:hidden}
-.com-hero::before{content:'';position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.08);top:-40px;right:-10px}
-.buddy-card{background:var(--white);border-radius:var(--r-card);margin:14px 22px 12px;box-shadow:var(--sh-sm);overflow:hidden}
-.buddy-head{display:flex;align-items:center;gap:12px;padding:14px 16px;border-bottom:1px solid var(--n50)}
-.buddy-ava{width:42px;height:42px;border-radius:14px;background:linear-gradient(135deg,var(--mint),var(--mint-dark));display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800;color:white;flex-shrink:0}
-.buddy-info{flex:1;min-width:0}
-.buddy-name{font-size:14px;font-weight:700;color:var(--n800);margin-bottom:2px;white-space:nowrap}
-.buddy-status{font-size:11px;color:var(--n400);white-space:nowrap}
-.buddy-streak{background:var(--n50);border-radius:12px;padding:6px 12px;text-align:center;flex-shrink:0}
-.buddy-streak-v{font-size:16px;font-weight:800;color:var(--n700);line-height:1}
-.buddy-streak-l{font-size:9px;color:var(--n400);text-transform:uppercase;letter-spacing:.05em}
-.buddy-msg{padding:12px 16px;border-bottom:1px solid var(--n50)}
-.buddy-msg-txt{background:var(--mint-light);border-radius:12px;padding:10px 14px;font-size:12px;color:var(--n700);line-height:1.5;font-style:italic}
-.buddy-acts{display:flex;gap:8px;padding:12px 16px}
-.bact{flex:1;padding:10px;border-radius:var(--r-pill);font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Nunito',sans-serif;text-align:center}
-.bact.pri{background:var(--mint);color:white}
-.bact.sec{background:var(--n50);color:var(--n600)}
-.mentor-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 12px;padding:14px 16px;box-shadow:var(--sh-xs)}
-.mentor-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.mentor-ava{width:40px;height:40px;border-radius:14px;background:linear-gradient(135deg,#f6c94e,#e5a020);display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:white;flex-shrink:0}
-.mentor-badge{font-size:10px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.05em;margin-bottom:2px}
-.mentor-name{font-size:13px;font-weight:700;color:var(--n800);white-space:nowrap}
-.mentor-sub{font-size:11px;color:var(--n400);white-space:nowrap}
-.mentor-quote{background:var(--mint-light);border-radius:12px;padding:11px 14px;font-size:12px;color:var(--mint-dark);line-height:1.5;font-style:italic}
-.event-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 10px;padding:13px 16px;display:flex;align-items:center;gap:12px;box-shadow:var(--sh-xs)}
-.edate{width:44px;height:44px;border-radius:14px;background:var(--purple-light);display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
-.eday{font-size:18px;font-weight:800;color:var(--purple);line-height:1}
-.emon{font-size:9px;font-weight:700;color:var(--purple-mid);text-transform:uppercase;letter-spacing:.05em}
-.einfo{flex:1;min-width:0}
-.eti{font-size:13px;font-weight:700;color:var(--n700);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.esu{font-size:11px;color:var(--n400);white-space:nowrap}
-.challenge-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 10px;padding:13px 16px;box-shadow:var(--sh-xs)}
-.ch-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.ch-title{font-size:13px;font-weight:700;color:var(--n700);white-space:nowrap}
-.ch-sub{font-size:11px;color:var(--n400);margin-top:2px}
-.ch-bar{height:7px;background:var(--n100);border-radius:var(--r-pill);margin-bottom:6px}
-.ch-fill{height:100%;width:67%;background:var(--mint);border-radius:var(--r-pill)}
-.ch-foot{display:flex;justify-content:space-between;font-size:11px;color:var(--n400)}
-.ch-foot span{font-weight:700;color:var(--mint-dark)}
-.tree-card{background:var(--n700);border-radius:var(--r-card);margin:0 22px 12px;padding:14px 16px;display:flex;align-items:center;gap:14px;position:relative;overflow:hidden}
-.tree-card::before{content:'';position:absolute;right:-10px;top:-10px;width:80px;height:80px;border-radius:50%;background:var(--mint);opacity:.1}
-.tree-ico-wrap{width:46px;height:46px;border-radius:14px;background:rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;position:relative}
-.tree-ico-wrap svg{width:24px;height:24px;stroke:var(--mint);fill:none;stroke-width:2;stroke-linecap:round}
-.tree-body{flex:1;position:relative;min-width:0}
-.tree-title{font-size:13px;font-weight:700;color:white;margin-bottom:2px;white-space:nowrap}
-.tree-sub{font-size:11px;color:rgba(255,255,255,.4);white-space:nowrap}
-.tree-count{font-size:30px;font-weight:800;color:var(--mint);position:relative;line-height:1}
-
-/* ════════════════════
-   PROGRESSO STYLES
-════════════════════ */
-.prog-hero{background:linear-gradient(135deg,#1d3461,var(--purple));padding:52px 22px 18px;flex-shrink:0;position:relative;overflow:hidden}
-.prog-hero::before{content:'';position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.07);top:-30px;right:10px}
-.stats-3{display:flex;gap:10px;padding:14px 22px 4px}
-.stat{flex:1;background:var(--white);border-radius:18px;padding:14px 12px;text-align:center;box-shadow:var(--sh-xs)}
-.stat-val{font-size:24px;font-weight:800;color:var(--n700);line-height:1;margin-bottom:3px}
-.stat-lbl{font-size:10px;font-weight:600;color:var(--n400);text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
-.radar-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 12px;padding:16px;box-shadow:var(--sh-sm)}
-.rc-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
-.rc-title{font-size:13px;font-weight:700;color:var(--n700)}
-.rc-leg{display:flex;gap:12px;font-size:11px;color:var(--n400);margin-top:8px}
-.rcl{display:flex;align-items:center;gap:5px}
-.rcl-d{width:9px;height:9px;border-radius:50%}
-.bchart-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 12px;padding:16px;box-shadow:var(--sh-xs)}
-.bchart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.bchart-title{font-size:13px;font-weight:700;color:var(--n700)}
-.bars-wrap{display:flex;align-items:flex-end;gap:7px;height:72px;margin-bottom:8px}
-.bcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px;height:100%;justify-content:flex-end}
-.bbar{width:100%;border-radius:8px 8px 0 0}
-.bbar.a{background:linear-gradient(180deg,var(--mint),var(--mint-dark))}
-.bbar.h{background:linear-gradient(180deg,var(--purple-mid),var(--purple))}
-.bbar.l{background:var(--n100)}
-.bday{font-size:9px;font-weight:700;color:var(--n300);text-transform:uppercase}
-.bday.a{color:var(--mint-dark)}.bday.h{color:var(--purple);font-weight:800}
-.bchart-foot{display:flex;justify-content:space-between;font-size:11px;color:var(--n400)}
-.bchart-foot span{font-weight:700;color:var(--mint-dark)}
-.mapa-card{background:var(--white);border-radius:var(--r-card);margin:0 22px 12px;box-shadow:var(--sh-sm);overflow:hidden}
-.mapa-header{background:var(--n700);padding:16px 18px;display:flex;justify-content:space-between;align-items:flex-start}
-.mapa-ey{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-bottom:4px}
-.mapa-title{font-size:18px;font-weight:800;color:white;margin-bottom:2px;white-space:nowrap}
-.mapa-date{font-size:11px;color:rgba(255,255,255,.35);white-space:nowrap}
-.mapa-score-n{font-size:42px;font-weight:800;color:white;line-height:1}
-.mapa-score-l{font-size:11px;color:rgba(255,255,255,.4);margin-top:2px}
-.mapa-grad-sec{padding:14px 18px;border-bottom:1px solid var(--n100)}
-.mapa-gbar{height:9px;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--red),var(--orange),#f6c94e,var(--mint),var(--mint-dark));position:relative;margin-bottom:5px}
-.mapa-needle{position:absolute;top:-3px;width:16px;height:16px;border-radius:50%;background:white;box-shadow:0 1px 5px rgba(0,0,0,.2);border:2.5px solid var(--n700);transform:translateX(-50%);left:72%}
-.mapa-scale{display:flex;justify-content:space-between;font-size:9px;font-weight:600;color:var(--n400)}
-.mapa-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px}
-.mapa-inds{padding:0 18px}
-.mind-sec{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--n400);padding:12px 0 6px;border-bottom:1px solid var(--n100)}
-.mind-row{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--n50)}
-.mind-row:last-child{border-bottom:none}
-.mind-body{flex:1;min-width:0}
-.mind-name{font-size:12px;font-weight:700;color:var(--n700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mind-desc{font-size:10px;color:var(--n400);margin-top:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.mind-val{font-size:12px;font-weight:800;padding:4px 10px;border-radius:var(--r-pill);min-width:52px;text-align:center;flex-shrink:0}
-.mind-val.r{background:var(--red-light);color:var(--red)}
-.mind-val.o{background:var(--orange-light);color:var(--orange)}
-.mind-val.g{background:var(--mint-light);color:var(--mint-dark)}
-.mind-val.b{background:var(--blue-light);color:var(--blue)}
-.risk-row{display:flex;gap:10px;padding:0 22px;margin-bottom:16px}
-.risk-c{flex:1;background:var(--white);border-radius:18px;padding:14px;box-shadow:var(--sh-xs)}
-.risk-lbl{font-size:10px;font-weight:700;color:var(--n400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px;white-space:nowrap}
-.risk-val{font-size:28px;font-weight:800;color:var(--n700);line-height:1;margin-bottom:8px}
-.risk-val.hi{color:var(--red)}
-.risk-bar{height:6px;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--mint),var(--orange),var(--red));margin-bottom:6px;position:relative}
-.risk-needle{position:absolute;top:-4px;width:14px;height:14px;border-radius:50%;background:white;border:2.5px solid var(--n700);transform:translateX(-50%)}
-.risk-sub{font-size:10px;color:var(--n400);white-space:nowrap}
 
 /* ── WHATSAPP FLOAT ── */
 .wa-fab{
@@ -974,9 +766,9 @@ body{
     <div class="meal-card">
       <div class="mc-head"><div class="mc-ico" style="background:var(--mint-light)"><svg style="stroke:var(--mint-dark)" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg></div><div class="mc-name">Cafe da manha</div><div class="mc-time">7h00</div><div class="mc-dot" style="background:var(--mint)"></div></div>
       <div class="mc-body">
-        <div class="fr" onclick="abrirSubstituicao('Omelete de 3 ovos','3 unidades','210 kcal')"><div class="fr-dot" style="background:var(--mint)"></div><div class="fr-info"><div class="fr-name">Omelete de 3 ovos</div><div class="fr-qty">3 unidades</div></div><div class="fr-kcal">210 kcal</div></div>
+        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--mint)"></div><div class="fr-info"><div class="fr-name">Omelete de 3 ovos</div><div class="fr-qty">3 unidades</div></div><div class="fr-kcal">210 kcal</div></div>
         <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Pao integral</div><div class="fr-qty">2 fatias</div></div><button class="fr-sub" onclick="abrirSubstituicao(this)">🔄 Substituir</button></div>
-        <div class="fr" onclick="abrirSubstituicao('Frutas vermelhas','1 xicara','60 kcal')"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Frutas vermelhas</div><div class="fr-qty">1 xicara</div></div><div class="fr-kcal">60 kcal</div></div>
+        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Frutas vermelhas</div><div class="fr-qty">1 xicara</div></div><div class="fr-kcal">60 kcal</div></div>
       </div>
       <div class="mc-actions"><button class="mc-btn primary">Refeicao concluida</button><button class="mc-btn secondary">Foto do prato</button></div>
     </div>
@@ -987,9 +779,9 @@ body{
     <div class="meal-card">
       <div class="mc-head"><div class="mc-ico" style="background:var(--n100)"><svg style="stroke:var(--n500)" viewBox="0 0 18 18"><path d="M4 2v14M14 2v5a4 4 0 0 1-4 4H4"/></svg></div><div class="mc-name">Almoco</div><div class="mc-time">12h00</div><div class="mc-dot" style="background:var(--n200)"></div></div>
       <div class="mc-body">
-        <div class="fr" onclick="abrirSubstituicao('Frango grelhado','150g','165 kcal')"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name">Frango grelhado</div><div class="fr-qty">150g</div></div><div class="fr-kcal">165 kcal</div></div>
+        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name">Frango grelhado</div><div class="fr-qty">150g</div></div><div class="fr-kcal">165 kcal</div></div>
         <div class="fr"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name">Arroz integral</div><div class="fr-qty">4 colheres</div></div><button class="fr-sub" onclick="abrirSubstituicao(this)">🔄 Substituir</button></div>
-        <div class="fr" onclick="abrirSubstituicao('Folhas verdes escuras','2 xicaras','20 kcal')"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Folhas verdes escuras</div><div class="fr-qty">2 xicaras</div></div><div class="fr-kcal">20 kcal</div></div>
+        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Folhas verdes escuras</div><div class="fr-qty">2 xicaras</div></div><div class="fr-kcal">20 kcal</div></div>
         <div class="mc-obs"><div class="mc-obs-txt">Comer devagar, sem telas. Mastigue bem.</div></div>
       </div>
       <div class="mc-actions"><button class="mc-btn secondary">Foto do prato</button><button class="mc-btn primary">Marcar consumido</button></div>
@@ -3168,25 +2960,24 @@ const TACO_DB = [
 let subAlimentoAtual = null;  // { nome, qty, kcal, fr_el }
 let subFiltroAtual   = 'mesmo';
 
-function abrirSubstituicao(btn) {
-  const fr   = btn.closest ? btn.closest('.fr') : btn.parentElement;
-  const nome = fr.querySelector('.fr-name')?.textContent?.trim() || '';
-  const qty  = fr.querySelector('.fr-qty')?.textContent?.trim()  || '';
-  const kcalTxt = fr.querySelector('.fr-kcal')?.textContent || '';
-  const kcal = parseFloat(kcalTxt) || 0;
+function abrirSubstituicao(el) {
+  const fr   = el.classList && el.classList.contains('fr')
+               ? el : (el.closest ? el.closest('.fr') : el.parentElement);
+  const nome = fr.querySelector('.fr-name') ? fr.querySelector('.fr-name').textContent.trim() : '';
+  const qty  = fr.querySelector('.fr-qty')  ? fr.querySelector('.fr-qty').textContent.trim()  : '';
+  const kcalEl = fr.querySelector('.fr-kcal');
+  const kcal = kcalEl ? parseFloat(kcalEl.textContent) || 0 : 0;
+  if (!nome) return;
 
   subAlimentoAtual = { nome, qty, kcal, fr };
   document.getElementById('sub-food-name').textContent = nome + (qty ? ' · ' + qty : '');
 
-  // Reseta filtro
   subFiltroAtual = 'mesmo';
-  document.querySelectorAll('.sub-filtro').forEach(b => b.classList.remove('on'));
-  document.querySelector('.sub-filtro')?.classList.add('on');
+  document.querySelectorAll('.sub-filtro').forEach(function(b){ b.classList.remove('on'); });
+  var first = document.querySelector('.sub-filtro');
+  if (first) first.classList.add('on');
 
-  // Gera sugestões
   gerarSugestoes();
-
-  // Abre sheet
   document.getElementById('sub-sheet').classList.add('open');
   document.body.style.overflow = 'hidden';
 }
@@ -3415,199 +3206,47 @@ function addTip(item) {
   ta.focus();
 }
 
-async function buscarSubstituicoes() {
-  const geladeira = document.getElementById('sub-geladeira').value.trim();
-  if (!geladeira) {
-    document.getElementById('sub-result').innerHTML =
-      '<div class="sub-error">Digite ao menos um ingrediente que você tem em casa.</div>';
-    return;
-  }
+document.getElementById('sub-panel')?.addEventListener('touchend', e => {
+  if (e.changedTouches[0].clientY - subTouchY > 70) fecharSub();
+}, { passive: true });
+</script>
 
-  const btn = document.getElementById('sub-btn');
-  btn.disabled = true;
-  btn.innerHTML = `<svg class="spin" viewBox="0 0 20 20"><path d="M4 10a6 6 0 0 1 6-6"/><path d="M16 10a6 6 0 0 1-6 6"/></svg>Buscando substituições...`;
+
+
+
+<script>
+// ════════════════════════════════════════════
+// CONEXÃO COM A API — App do Paciente
+// ════════════════════════════════════════════
+
+
+// ════════════════════════════════════════════
+//  AI SUBSTITUIÇÃO DE ALIMENTOS
+// ════════════════════════════════════════════
+
+function abrirSubstituicao(nome, qty, kcal) {
+  subFoodAtual = { nome, qty, kcal };
+  document.getElementById('sub-food-tag').textContent = `${nome} · ${qty}`;
+  document.getElementById('sub-geladeira').value = '';
   document.getElementById('sub-result').innerHTML = '';
+  document.getElementById('sub-btn').disabled = false;
+  document.getElementById('sub-btn').innerHTML = `<svg id="sub-icon" viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zM10 6v4l3 3"/></svg>Buscar substituições com IA`;
+  document.getElementById('sub-sheet').classList.add('open');
+}
 
-  try {
-    const prompt = `Você é nutricionista especialista em Medicina do Estilo de Vida (MEV/ACLM).
+function fecharSubstituicao(e) {
+  if (e && e.target !== document.getElementById('sub-sheet')) return;
+  document.getElementById('sub-sheet').classList.remove('open');
+}
 
-O paciente precisa substituir: ${subFoodAtual.nome} (${subFoodAtual.qty}, ~${subFoodAtual.kcal})
-
-Ingredientes disponíveis em casa: ${geladeira}
-
-Gere 3 sugestões de substituição USANDO APENAS os ingredientes disponíveis.
-Responda SOMENTE com um array JSON, sem markdown, sem explicação fora do JSON:
-[{"nome":"...","quantidade":"...","kcal":"...","similaridade":"Alta","motivo":"..."}]
-
-Regras:
-- Use apenas o que o paciente listou
-- Mantenha valor calórico e proteico similares
-- Linguagem simples
-- Se impossível, retorne []`;
-
-    const resp = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        model: 'claude-sonnet-4-20250514',
-        max_tokens: 800,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-
-    if (!resp.ok) {
-      // CORS ou sem API key — usa modo offline com sugestões locais
-      throw new Error('offline');
-    }
-
-    const data = await resp.json();
-    const text = data.content?.[0]?.text || '';
-
-    // Parse JSON da resposta
-    const jsonMatch = text.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) throw new Error('Resposta inesperada da IA');
-
-    const sugestoes = JSON.parse(jsonMatch[0]);
-
-    if (!sugestoes.length) {
-      document.getElementById('sub-result').innerHTML =
-        `<div class="sub-error">Não foi possível encontrar substituições com os ingredientes informados.<br>Tente adicionar mais opções do que você tem em casa.</div>`;
-    } else {
-      const cores = {Alta:'var(--mint-dark)', Média:'var(--orange)', Baixa:'var(--n400)'};
-      document.getElementById('sub-result').innerHTML =
-        `<div style="font-size:11px;font-weight:700;color:var(--n400);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px">
-          ${sugestoes.length} sugestão${sugestoes.length>1?'ões':''} encontrada${sugestoes.length>1?'s':''}
-        </div>` +
-        sugestoes.map((s,i) => `
-          <div class="sub-card" id="sub-card-${i}">
-            <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px">
-              <div>
-                <div class="sub-card-name">${s.nome}</div>
-                <div class="sub-card-qty">${s.quantidade}</div>
-                <div class="sub-card-kcal">~${s.kcal}</div>
-              </div>
-              <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">
-                <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;background:${cores[s.similaridade]||'var(--n400)'}22;color:${cores[s.similaridade]||'var(--n400)'}">
-                  Similaridade ${s.similaridade}
-                </span>
-                <button class="sub-card-apply" onclick="aplicarSubstituicao(${i}, '${s.nome.replace(/'/g,"\\'")}', '${s.quantidade.replace(/'/g,"\\'")}', '${s.kcal.replace(/'/g,"\\'")}')">
-                  Usar esta ✓
-                </button>
-              </div>
-            </div>
-            <div class="sub-card-why">💡 ${s.motivo}</div>
-          </div>`).join('');
-    }
-
-  } catch(err) {
-    // Se for erro de CORS/rede, usa sugestões locais baseadas no alimento
-    if (err.message === 'offline' || err.message.includes('fetch') || err.message.includes('CORS') || err.message.includes('Failed')) {
-      const fallback = gerarSubstituicoesOffline();
-      renderSubstituicoes(fallback);
-    } else {
-      document.getElementById('sub-result').innerHTML =
-        `<div class="sub-error">Não foi possível buscar sugestões agora. Tente novamente.<br><small style="color:var(--red);opacity:.7">${err.message}</small></div>`;
-    }
-  }
-
-  btn.disabled = false;
-  btn.innerHTML = `<svg viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zM10 6v4l3 3"/></svg>Buscar novamente`;
+function addTip(item) {
+  const ta = document.getElementById('sub-geladeira');
+  const val = ta.value.trim();
+  ta.value = val ? val + ', ' + item : item;
+  ta.focus();
 }
 
 
-// Fallback offline — usa base local de substituições comuns
-function gerarSubstituicoesOffline() {
-  const geladeira = document.getElementById('sub-geladeira').value.toLowerCase();
-  const nome = subFoodAtual.nome.toLowerCase();
-  const base = {
-    'pao':        [{nome:'Tapioca',quantidade:'2 unidades médias',kcal:'110 kcal',similaridade:'Alta',motivo:'Carboidrato similar, sem glúten, muito usado na culinária brasileira saudável.'},
-                   {nome:'Aveia cozida',quantidade:'4 colheres de sopa',kcal:'120 kcal',similaridade:'Alta',motivo:'Rica em fibra solúvel, ótima para saciedade e controle glicêmico.'},
-                   {nome:'Batata-doce cozida',quantidade:'1 unidade pequena',kcal:'100 kcal',similaridade:'Média',motivo:'Carboidrato de baixo índice glicêmico, excelente para energia sustentada.'}],
-    'arroz':      [{nome:'Quinoa cozida',quantidade:'4 colheres',kcal:'130 kcal',similaridade:'Alta',motivo:'Proteína completa e carboidrato complexo, ideal para MEV.'},
-                   {nome:'Batata-doce',quantidade:'1 unidade média',kcal:'115 kcal',similaridade:'Alta',motivo:'Baixo IG, fonte de fibras e vitaminas do complexo B.'},
-                   {nome:'Mandioca cozida',quantidade:'3 colheres',kcal:'120 kcal',similaridade:'Média',motivo:'Carboidrato energético, fácil digestão.'}],
-    'frango':     [{nome:'Ovo mexido',quantidade:'3 ovos',kcal:'150 kcal',similaridade:'Alta',motivo:'Proteína de alta qualidade, mesma quantidade proteica que o frango.'},
-                   {nome:'Atum em água',quantidade:'1 lata pequena (80g)',kcal:'90 kcal',similaridade:'Alta',motivo:'Proteína magra, rico em ômega-3, ótimo para MEV.'},
-                   {nome:'Queijo minas',quantidade:'2 fatias',kcal:'120 kcal',similaridade:'Média',motivo:'Proteína e cálcio, ideal quando não há carne disponível.'}],
-    'ovo':        [{nome:'Iogurte grego',quantidade:'1 pote (170g)',kcal:'130 kcal',similaridade:'Alta',motivo:'Proteína similar, além de probióticos benéficos.'},
-                   {nome:'Queijo minas',quantidade:'2 fatias',kcal:'100 kcal',similaridade:'Média',motivo:'Boa fonte de proteína e cálcio para o café da manhã.'},
-                   {nome:'Atum',quantidade:'1/2 lata',kcal:'90 kcal',similaridade:'Alta',motivo:'Proteína magra de qualidade equivalente.'}],
-    'default':    [{nome:'Iogurte natural',quantidade:'1 pote (170g)',kcal:'100 kcal',similaridade:'Média',motivo:'Proteína e probióticos, boa opção versátil para substituições.'},
-                   {nome:'Ovo cozido',quantidade:'2 unidades',kcal:'140 kcal',similaridade:'Média',motivo:'Proteína completa e de fácil preparo, presente na maioria das casas.'},
-                   {nome:'Fruta disponível',quantidade:'1 unidade média',kcal:'80 kcal',similaridade:'Baixa',motivo:'Quando não há opção equivalente, priorize frutas para manter a qualidade nutricional.'}]
-  };
-  // Encontra a chave mais próxima
-  const key = Object.keys(base).find(k => nome.includes(k)) || 'default';
-  return base[key];
-}
-
-function renderSubstituicoes(sugestoes) {
-  if (!sugestoes || !sugestoes.length) {
-    document.getElementById('sub-result').innerHTML =
-      '<div class="sub-error">Não foi possível encontrar substituições. Tente adicionar mais ingredientes.</div>';
-    return;
-  }
-  const cores = {Alta:'var(--mint-dark)', Média:'var(--orange)', Baixa:'var(--n400)'};
-  document.getElementById('sub-result').innerHTML =
-    `<div style="display:flex;align-items:center;gap:6px;margin-bottom:8px">
-       <div style="font-size:11px;font-weight:700;color:var(--n400);text-transform:uppercase;letter-spacing:.06em">${sugestoes.length} sugestões encontradas</div>
-     </div>` +
-    sugestoes.map((s,i) => `
-      <div class="sub-card" id="sub-card-${i}">
-        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px">
-          <div>
-            <div class="sub-card-name">${s.nome}</div>
-            <div class="sub-card-qty">${s.quantidade}</div>
-            <div class="sub-card-kcal">~${s.kcal}</div>
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:flex-end;gap:5px;flex-shrink:0">
-            <span style="font-size:9px;font-weight:700;padding:2px 8px;border-radius:20px;background:${cores[s.similaridade]||'var(--n400)'}22;color:${cores[s.similaridade]||'var(--n400)'}">
-              Similaridade ${s.similaridade||'Média'}
-            </span>
-            <button class="sub-card-apply" onclick="aplicarSubstituicao(${i},'${s.nome.replace(/'/g,"\'")}','${s.quantidade.replace(/'/g,"\'")}','${s.kcal.replace(/'/g,"\'")}')">
-              Usar esta ✓
-            </button>
-          </div>
-        </div>
-        <div class="sub-card-why">💡 ${s.motivo}</div>
-      </div>`).join('');
-}
-
-function aplicarSubstituicao(idx, nome, qty, kcal) {
-  // Marca o card como selecionado
-  document.querySelectorAll('.sub-card').forEach(c => c.classList.remove('selected'));
-  const card = document.getElementById('sub-card-'+idx);
-  if(card) card.classList.add('selected');
-
-  // Atualiza o item no cardápio
-  const tag = document.getElementById('sub-food-tag');
-  const nomeOriginal = subFoodAtual.nome;
-
-  // Busca e atualiza o elemento na tela
-  document.querySelectorAll('.fr-name').forEach(el => {
-    if(el.textContent.trim() === nomeOriginal) {
-      el.textContent = nome;
-      const qtyEl = el.closest('.fr-info')?.querySelector('.fr-qty');
-      if(qtyEl) qtyEl.textContent = qty;
-      const kcalEl = el.closest('.fr')?.querySelector('.fr-kcal');
-      if(kcalEl) kcalEl.textContent = kcal;
-      // Destaca brevemente
-      const row = el.closest('.fr');
-      if(row){ row.style.background='var(--mint-light)'; setTimeout(()=>row.style.background='',1500); }
-    }
-  });
-
-  // Fecha o sheet após animação
-  setTimeout(() => {
-    document.getElementById('sub-sheet').classList.remove('open');
-    // Toast de confirmação
-    const toast = document.createElement('div');
-    toast.style.cssText = 'position:fixed;bottom:100px;left:50%;transform:translateX(-50%);background:var(--n800);color:white;padding:10px 20px;border-radius:12px;font-size:13px;font-weight:600;z-index:200;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.3)';
-    toast.textContent = `✅ Substituído por ${nome}!`;
-    document.body.appendChild(toast);
-    setTimeout(()=>toast.remove(), 2800);
-  }, 600);
-}
 
 // Fecha com swipe down no handle
 let subStartY = 0;
