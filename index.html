@@ -57,39 +57,13 @@ body{
 .screen.active{opacity:1;pointer-events:all;transform:translateX(0)}
 .screen.slide-left{transform:translateX(-40px)}
 
-/* ── AI SUBSTITUIÇÃO ── */
 
-/* ── SUBSTITUIÇÃO (TACO) ── */
-.sub-sheet{position:fixed;inset:0;z-index:200;pointer-events:none}
-.sub-sheet.open{pointer-events:all}
-.sub-backdrop{position:absolute;inset:0;background:rgba(20,28,46,.5);opacity:0;transition:opacity .28s}
-.sub-sheet.open .sub-backdrop{opacity:1}
-.sub-panel{position:absolute;bottom:0;left:0;right:0;background:var(--white);border-radius:22px 22px 0 0;max-height:82vh;display:flex;flex-direction:column;transform:translateY(100%);transition:transform .32s cubic-bezier(.4,0,.2,1);box-shadow:0 -8px 40px rgba(0,0,0,.18)}
-.sub-sheet.open .sub-panel{transform:translateY(0)}
-.sub-handle{width:38px;height:4px;border-radius:2px;background:var(--n200);margin:12px auto 6px;cursor:pointer;flex-shrink:0}
-.sub-header{padding:10px 18px 12px;border-bottom:1px solid var(--n100);flex-shrink:0}
-.sub-title{font-size:15px;font-weight:800;color:var(--n800)}
-.sub-food{font-size:12px;color:var(--mint-dark);font-weight:600;background:var(--mint-light);display:inline-block;padding:3px 10px;border-radius:20px;margin-top:5px}
-.sub-filtro{background:var(--n100);color:var(--n600);border:none;border-radius:20px;padding:6px 13px;font-size:11px;font-weight:600;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;transition:all .15s;flex-shrink:0}
-.sub-filtro.on{background:var(--mint);color:white;box-shadow:0 2px 8px rgba(45,204,180,.3)}
-.sub-results{flex:1;overflow-y:auto;padding:10px 14px 24px;display:flex;flex-direction:column;gap:8px}
-.sub-card{background:var(--n50);border:1.5px solid var(--n100);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer;transition:all .15s;-webkit-tap-highlight-color:transparent}
-.sub-card:active{background:var(--mint-light);border-color:var(--mint);transform:scale(.98)}
-.sub-card-main{flex:1;min-width:0}
-.sub-card-nome{font-size:13px;font-weight:700;color:var(--n800);margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.sub-card-cat{font-size:10px;color:var(--n400);margin-bottom:5px}
-.sub-card-macros{display:flex;gap:5px;flex-wrap:wrap}
-.sub-macro{font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px}
-.sub-macro.kcal{background:rgba(240,146,74,.12);color:var(--orange)}
-.sub-macro.prot{background:rgba(37,99,235,.1);color:#1d4ed8}
-.sub-macro.carb{background:rgba(224,168,0,.12);color:#92660c}
-.sub-macro.fat{background:rgba(232,69,60,.1);color:var(--red)}
-.sub-card-btn{background:var(--mint);color:white;border:none;border-radius:20px;padding:7px 14px;font-size:11px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;flex-shrink:0;white-space:nowrap}
-.fr-sub-btn{background:var(--mint-light);color:var(--mint-dark);border:1px solid rgba(45,204,180,.25);border-radius:20px;padding:4px 11px;font-size:10px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;white-space:nowrap;flex-shrink:0}
+/* ── Substituição sugerida pelo nutricionista ── */
+.fr-sub-nutri{display:flex;align-items:center;gap:6px;padding:5px 14px 6px 32px;background:#f5f0ff;border-bottom:1px solid rgba(123,94,167,.1)}
+.fr-sub-icon{font-size:11px;flex-shrink:0}
+.fr-sub-texto{font-size:11px;color:#6b4a96}
+.fr-sub-texto strong{font-weight:700;color:#5a3e8a}
 
-.fr{cursor:pointer;transition:background .1s;border-radius:10px;padding:2px 4px;margin:0 -4px}
-.fr:hover,.fr:active{background:var(--mint-light)}
-.fr-sub-btn{background:linear-gradient(135deg,var(--mint),var(--mint-dark));color:white;border:none;border-radius:20px;padding:4px 11px;font-size:10px;font-weight:700;cursor:pointer;font-family:"Inter",sans-serif;white-space:nowrap;flex-shrink:0}
 
 /* ── LOGIN ── */
 .login-screen{position:absolute;inset:0;background:var(--white);z-index:60;display:flex;flex-direction:column;overflow:hidden}
@@ -374,8 +348,8 @@ body{
 .fr-name{font-size:12px;font-weight:600;color:var(--n700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .fr-qty{font-size:11px;color:var(--n400);white-space:nowrap}
 .fr-kcal{font-size:11px;font-weight:700;color:var(--n500);flex-shrink:0;white-space:nowrap}
-.fr-sub{font-size:10px;font-weight:700;color:var(--mint-dark);background:var(--mint-light);padding:3px 10px;border-radius:var(--r-pill);flex-shrink:0;white-space:nowrap;border:none;cursor:pointer;font-family:'Nunito',sans-serif;transition:all .15s}
-.fr-sub:active{transform:scale(.96)}
+
+
 
 /* ── SUBSTITUTION SHEET ── */
 
@@ -766,23 +740,18 @@ body{
     <div class="meal-card">
       <div class="mc-head"><div class="mc-ico" style="background:var(--mint-light)"><svg style="stroke:var(--mint-dark)" viewBox="0 0 18 18"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg></div><div class="mc-name">Cafe da manha</div><div class="mc-time">7h00</div><div class="mc-dot" style="background:var(--mint)"></div></div>
       <div class="mc-body">
-        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--mint)"></div><div class="fr-info"><div class="fr-name">Omelete de 3 ovos</div><div class="fr-qty">3 unidades</div></div><div class="fr-kcal">210 kcal</div></div>
-        <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Pao integral</div><div class="fr-qty">2 fatias</div></div><button class="fr-sub" onclick="abrirSubstituicao(this)">🔄 Substituir</button></div>
-        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Frutas vermelhas</div><div class="fr-qty">1 xicara</div></div><div class="fr-kcal">60 kcal</div></div>
+        <div class="fr"><div class="fr-dot" style="background:var(--mint)"></div><div class="fr-info"><div class="fr-name">Omelete de 3 ovos</div><div class="fr-qty">3 unidades</div></div><div class="fr-kcal">210 kcal</div></div>
+        <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Pao integral</div><div class="fr-qty">2 fatias</div></div></div>
+        <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Frutas vermelhas</div><div class="fr-qty">1 xicara</div></div><div class="fr-kcal">60 kcal</div></div>
       </div>
       <div class="mc-actions"><button class="mc-btn primary">Refeicao concluida</button><button class="mc-btn secondary">Foto do prato</button></div>
-    </div>
-    <div class="photo-card">
-      <div class="photo-img"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21,15 16,10 5,21"/></svg><div class="photo-lbl">Cafe da manha · 07:23</div></div>
-      <div class="photo-body"><div class="photo-row"><div class="photo-meal">Feedback do nutricionista</div><div class="photo-time">07:28</div></div><div class="photo-comment"><div class="photo-ava"><svg viewBox="0 0 16 16"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zM2 14s-1 0-1-1 1-4 7-4 7 3 7 4-1 1-1 1H2z"/></svg></div><div class="photo-ct">"Prato excelente! Proteina no cafe da manha e fundamental. Continue assim!"</div></div></div>
     </div>
     <div class="meal-card">
       <div class="mc-head"><div class="mc-ico" style="background:var(--n100)"><svg style="stroke:var(--n500)" viewBox="0 0 18 18"><path d="M4 2v14M14 2v5a4 4 0 0 1-4 4H4"/></svg></div><div class="mc-name">Almoco</div><div class="mc-time">12h00</div><div class="mc-dot" style="background:var(--n200)"></div></div>
       <div class="mc-body">
-        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name">Frango grelhado</div><div class="fr-qty">150g</div></div><div class="fr-kcal">165 kcal</div></div>
-        <div class="fr"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name">Arroz integral</div><div class="fr-qty">4 colheres</div></div><button class="fr-sub" onclick="abrirSubstituicao(this)">🔄 Substituir</button></div>
-        <div class="fr" onclick="abrirSubstituicao(this)"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Folhas verdes escuras</div><div class="fr-qty">2 xicaras</div></div><div class="fr-kcal">20 kcal</div></div>
-        <div class="mc-obs"><div class="mc-obs-txt">Comer devagar, sem telas. Mastigue bem.</div></div>
+        <div class="fr"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name">Frango grelhado</div><div class="fr-qty">150g</div></div><div class="fr-kcal">165 kcal</div></div>
+        <div class="fr"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name">Arroz integral</div><div class="fr-qty">4 colheres</div></div></div>
+        <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name">Folhas verdes escuras</div><div class="fr-qty">2 xicaras</div></div><div class="fr-kcal">20 kcal</div></div>
       </div>
       <div class="mc-actions"><button class="mc-btn secondary">Foto do prato</button><button class="mc-btn primary">Marcar consumido</button></div>
     </div>
@@ -2330,35 +2299,7 @@ let subFoodRow  = null;
 
 </script>
 
-<!-- ═══ SUBSTITUIÇÃO DE ALIMENTOS (TACO) ═══ -->
-<div class="sub-sheet" id="sub-sheet">
-  <div class="sub-backdrop" onclick="fecharSub()"></div>
-  <div class="sub-panel" id="sub-panel">
-    <div class="sub-handle" onclick="fecharSub()"></div>
 
-    <div class="sub-header">
-      <div style="display:flex;align-items:center;justify-content:space-between">
-        <div>
-          <div class="sub-title">🔄 Substituir alimento</div>
-          <div class="sub-food" id="sub-food-name" style="margin-top:3px"></div>
-        </div>
-        <button onclick="fecharSub()" style="background:none;border:none;color:var(--n400);font-size:22px;cursor:pointer;line-height:1;padding:0 4px">×</button>
-      </div>
-    </div>
-
-    <!-- Filtros de categoria -->
-    <div id="sub-filtros" style="display:flex;gap:6px;padding:10px 18px;overflow-x:auto;scrollbar-width:none;flex-shrink:0;border-bottom:1px solid var(--n100)">
-      <button class="sub-filtro on" onclick="filtrarSub('mesmo',this)">Mesmo grupo</button>
-      <button class="sub-filtro" onclick="filtrarSub('proteina',this)">Mais proteína</button>
-      <button class="sub-filtro" onclick="filtrarSub('lowcarb',this)">Low carb</button>
-      <button class="sub-filtro" onclick="filtrarSub('lowfat',this)">Menos gordura</button>
-      <button class="sub-filtro" onclick="filtrarSub('similar',this)">Mais similar</button>
-    </div>
-
-    <!-- Lista de sugestões -->
-    <div class="sub-results" id="sub-results"></div>
-  </div>
-</div>
 
 
 <script>
@@ -2955,200 +2896,54 @@ const TACO_DB = [
 ];
 
 // ════════════════════════════════════════════
-// SUBSTITUIÇÃO DE ALIMENTOS — baseada na TACO
+// SUBSTITUIÇÕES DO NUTRICIONISTA → APP
+// Lê do localStorage (gravado pelo dashboard)
 // ════════════════════════════════════════════
-let subAlimentoAtual = null;  // { nome, qty, kcal, fr_el }
-let subFiltroAtual   = 'mesmo';
 
-function abrirSubstituicao(el) {
-  const fr   = el.classList && el.classList.contains('fr')
-               ? el : (el.closest ? el.closest('.fr') : el.parentElement);
-  const nome = fr.querySelector('.fr-name') ? fr.querySelector('.fr-name').textContent.trim() : '';
-  const qty  = fr.querySelector('.fr-qty')  ? fr.querySelector('.fr-qty').textContent.trim()  : '';
-  const kcalEl = fr.querySelector('.fr-kcal');
-  const kcal = kcalEl ? parseFloat(kcalEl.textContent) || 0 : 0;
-  if (!nome) return;
-
-  subAlimentoAtual = { nome, qty, kcal, fr };
-  document.getElementById('sub-food-name').textContent = nome + (qty ? ' · ' + qty : '');
-
-  subFiltroAtual = 'mesmo';
-  document.querySelectorAll('.sub-filtro').forEach(function(b){ b.classList.remove('on'); });
-  var first = document.querySelector('.sub-filtro');
-  if (first) first.classList.add('on');
-
-  gerarSugestoes();
-  document.getElementById('sub-sheet').classList.add('open');
-  document.body.style.overflow = 'hidden';
+function carregarSubstituicoesNutri() {
+  try {
+    return JSON.parse(localStorage.getItem('r360_substituicoes') || '{}');
+  } catch(e) { return {}; }
 }
 
-function fecharSub() {
-  document.getElementById('sub-sheet').classList.remove('open');
-  document.body.style.overflow = '';
+function injetarSubstituicoesNoApp() {
+  const subs = carregarSubstituicoesNutri();
+  if (!Object.keys(subs).length) return;
+
+  // Só injeta dentro da tela de alimentação (s-alim)
+  var tela = document.getElementById('s-alim');
+  if (!tela) return;
+
+  tela.querySelectorAll('.fr-name').forEach(function(nmEl) {
+    var nome = nmEl.textContent.trim();
+    var sub  = subs[nome];
+    if (!sub || !sub.sub) return;
+
+    var fr = nmEl.closest('.fr');
+    if (!fr) return;
+
+    // Não duplica
+    if (fr.nextElementSibling && fr.nextElementSibling.classList.contains('fr-sub-nutri')) return;
+
+    var row = document.createElement('div');
+    row.className = 'fr-sub-nutri';
+    row.innerHTML =
+      '<span class="fr-sub-icon">🔄</span>' +
+      '<span class="fr-sub-texto">Sugestão: <strong>' +
+      sub.sub + (sub.qty ? ' · ' + sub.qty : '') +
+      '</strong></span>';
+    fr.after(row);
+  });
 }
 
-function filtrarSub(filtro, btn) {
-  subFiltroAtual = filtro;
-  document.querySelectorAll('.sub-filtro').forEach(b => b.classList.remove('on'));
-  btn.classList.add('on');
-  gerarSugestoes();
-}
-
-function encontrarAlimentoTACO(nome) {
-  const nL = nome.toLowerCase().replace(/[,\.]/g, '');
-  // Busca por correspondência parcial de palavras
-  const palavras = nL.split(/\s+/).filter(p => p.length > 3);
-
-  let melhor = null, melhorScore = 0;
-  for (const a of TACO_DB) {
-    const aL = (a.name || a.nome || '').toLowerCase();
-    let score = 0;
-    for (const p of palavras) {
-      if (aL.includes(p)) score++;
-    }
-    if (score > melhorScore) { melhorScore = score; melhor = a; }
-  }
-  return melhor;
-}
-
-function gerarSugestoes() {
-  const results = document.getElementById('sub-results');
-  results.innerHTML = '<div style="padding:24px;text-align:center;color:var(--n400);font-size:13px">Buscando equivalentes...</div>';
-
-  setTimeout(() => {
-    const base = encontrarAlimentoTACO(subAlimentoAtual.nome);
-    const sugestoes = buscarEquivalentes(base, subFiltroAtual);
-
-    if (!sugestoes.length) {
-      results.innerHTML = '<div style="padding:24px;text-align:center;color:var(--n400);font-size:13px">Nenhuma sugestão encontrada para este filtro.</div>';
-      return;
-    }
-
-    results.innerHTML = sugestoes.map((s, i) => {
-      const dKcal = base ? Math.round(s.kcal - base.kcal) : 0;
-      const sinal = dKcal > 0 ? '+' : '';
-      const corKcal = dKcal > 30 ? 'var(--red)' : dKcal < -30 ? 'var(--mint-dark)' : 'var(--n500)';
-      const cat = s.cat || s.grupo || '';
-      const nome = s.name || s.nome;
-      return `
-        <div class="sub-card" onclick="aplicarSub(${i})">
-          <div class="sub-card-main">
-            <div class="sub-card-nome">${nome}</div>
-            <div class="sub-card-cat">${cat}</div>
-            <div class="sub-card-macros">
-              <span class="sub-macro kcal">${s.kcal} kcal</span>
-              <span class="sub-macro prot">${s.prot}g P</span>
-              <span class="sub-macro carb">${s.carb}g C</span>
-              <span class="sub-macro fat">${s.lip}g G</span>
-            </div>
-            ${base ? `<div style="font-size:11px;color:${corKcal};margin-top:3px">${sinal}${dKcal} kcal em relação ao original</div>` : ''}
-          </div>
-          <button class="sub-card-btn">Usar</button>
-        </div>`;
-    }).join('');
-
-    // Guarda sugestões para aplicar
-    results._sugestoes = sugestoes;
-  }, 120);
-}
-
-function buscarEquivalentes(base, filtro) {
-  if (!base) {
-    // Sem match TACO — retorna alimentos comuns do mesmo filtro
-    return TACO_DB.filter(a => {
-      if (filtro === 'proteina') return a.prot >= 15;
-      if (filtro === 'lowcarb')  return a.carb <= 10;
-      if (filtro === 'lowfat')   return a.lip <= 3;
-      return a.kcal >= 50 && a.kcal <= 300;
-    }).slice(0, 8);
-  }
-
-  const cat  = base.cat || base.grupo || '';
-  const kcal = base.kcal || 0;
-  const prot = base.prot || 0;
-  const carb = base.carb || 0;
-  const lip  = base.lip  || 0;
-  const baseId = base.id;
-
-  // Score de similaridade nutricional
-  function score(a) {
-    if (a.id === baseId) return -1; // exclui o próprio
-    const dK = Math.abs((a.kcal||0) - kcal) / (kcal||1);
-    const dP = Math.abs((a.prot||0) - prot) / (prot||1);
-    const dC = Math.abs((a.carb||0) - carb) / (carb||1);
-    const dL = Math.abs((a.lip||0)  - lip)  / (lip||1);
-    return -(dK*0.4 + dP*0.35 + dC*0.15 + dL*0.1); // negativo = mais similar
-  }
-
-  let candidatos = TACO_DB.filter(a => a.id !== baseId);
-
-  if (filtro === 'mesmo') {
-    // Mesmo grupo, kcal parecido (±40%)
-    const mesmoGrupo = candidatos.filter(a => (a.cat||a.grupo||'') === cat && Math.abs((a.kcal||0)-kcal) <= kcal*0.4);
-    const lista = mesmoGrupo.length >= 4 ? mesmoGrupo : candidatos.filter(a => Math.abs((a.kcal||0)-kcal) <= kcal*0.35);
-    return lista.sort((a,b) => score(b)-score(a)).slice(0,6);
-  }
-
-  if (filtro === 'proteina') {
-    return candidatos.filter(a => (a.prot||0) >= prot * 0.85)
-      .sort((a,b) => (b.prot||0)-(a.prot||0)).slice(0,6);
-  }
-
-  if (filtro === 'lowcarb') {
-    return candidatos.filter(a => (a.carb||0) <= Math.max(carb*0.6, 5))
-      .sort((a,b) => (a.carb||0)-(b.carb||0)).slice(0,6);
-  }
-
-  if (filtro === 'lowfat') {
-    return candidatos.filter(a => (a.lip||0) <= Math.max(lip*0.6, 2))
-      .sort((a,b) => (a.lip||0)-(b.lip||0)).slice(0,6);
-  }
-
-  // 'similar': melhor score nutricional geral
-  return candidatos.sort((a,b) => score(b)-score(a)).slice(0,6);
-}
-
-function aplicarSub(idx) {
-  const results  = document.getElementById('sub-results');
-  const sugestoes = results._sugestoes;
-  if (!sugestoes || !sugestoes[idx]) return;
-
-  const s    = sugestoes[idx];
-  const nome = s.name || s.nome;
-  const fr   = subAlimentoAtual.fr;
-
-  // Atualiza o item no cardápio
-  if (fr) {
-    const nEl = fr.querySelector('.fr-name');
-    const kEl = fr.querySelector('.fr-kcal');
-    if (nEl) nEl.textContent = nome;
-    if (kEl) kEl.textContent = Math.round(s.kcal) + ' kcal';
-
-    // Pulsa o item substituído
-    fr.style.transition = 'background .3s';
-    fr.style.background = 'var(--mint-light)';
-    setTimeout(() => { fr.style.background = ''; }, 1400);
-  }
-
-  fecharSub();
-
-  // Toast
-  const t = document.createElement('div');
-  t.style.cssText = 'position:fixed;bottom:110px;left:50%;transform:translateX(-50%);background:var(--n800);color:white;padding:10px 18px;border-radius:12px;font-size:13px;font-weight:600;z-index:300;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25)';
-  t.textContent = '✅ Substituído por ' + nome;
-  document.body.appendChild(t);
-  setTimeout(() => t.remove(), 2600);
-}
-
-// Swipe down para fechar
-let subTouchY = 0;
-document.getElementById('sub-panel')?.addEventListener('touchstart', e => {
-  subTouchY = e.touches[0].clientY;
-}, { passive: true });
-document.getElementById('sub-panel')?.addEventListener('touchend', e => {
-  if (e.changedTouches[0].clientY - subTouchY > 70) fecharSub();
-}, { passive: true });
+// Executa ao entrar no app e periodicamente (sincronização)
+document.addEventListener('DOMContentLoaded', function() {
+  injetarSubstituicoesNoApp();
+  // Atualiza a cada 30s caso o profissional mude algo no dash
+  setInterval(injetarSubstituicoesNoApp, 30000);
+});
 </script>
+
 
 
 
@@ -3160,103 +2955,23 @@ document.getElementById('sub-panel')?.addEventListener('touchend', e => {
 const API_URL = 'https://raizes360-api.onrender.com';
 let authToken = localStorage.getItem('r360_app_token') || null;
 
-async function apiFetch(path, options = {}) {
-  const resp = await fetch(API_URL + path, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-      ...(authToken ? { 'Authorization': 'Bearer ' + authToken } : {}),
-      ...(options.headers || {}),
-    }
-  });
+async function apiFetch(path, options) {
+  options = options || {};
+  var resp = await fetch(API_URL + path, Object.assign({}, options, {
+    headers: Object.assign(
+      { 'Content-Type': 'application/json' },
+      authToken ? { 'Authorization': 'Bearer ' + authToken } : {},
+      options.headers || {}
+    )
+  }));
   if (resp.status === 403) {
-    const err = await resp.json().catch(()=>({message:'Acesso suspenso.'}));
-    showAccessRevoked(err.message || 'Acesso suspenso.');
+    var err = await resp.json().catch(function(){ return { message: 'Acesso suspenso.' }; });
+    if (typeof showAccessRevoked === 'function') showAccessRevoked(err.message || 'Acesso suspenso.');
     return null;
   }
-  if (!resp.ok) throw await resp.json().catch(()=>({error:'Erro'}));
+  if (!resp.ok) throw await resp.json().catch(function(){ return { error: 'Erro' }; });
   return resp.json();
 }
-
-
-// ════════════════════════════════════════════
-//  AI SUBSTITUIÇÃO DE ALIMENTOS
-// ════════════════════════════════════════════
-let subFoodAtual = { nome: '', qty: '', kcal: '' };
-
-function abrirSubstituicao(nome, qty, kcal) {
-  subFoodAtual = { nome, qty, kcal };
-  document.getElementById('sub-food-tag').textContent = `${nome} · ${qty}`;
-  document.getElementById('sub-geladeira').value = '';
-  document.getElementById('sub-result').innerHTML = '';
-  document.getElementById('sub-btn').disabled = false;
-  document.getElementById('sub-btn').innerHTML = `<svg id="sub-icon" viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zM10 6v4l3 3"/></svg>Buscar substituições com IA`;
-  document.getElementById('sub-sheet').classList.add('open');
-}
-
-function fecharSubstituicao(e) {
-  if (e && e.target !== document.getElementById('sub-sheet')) return;
-  document.getElementById('sub-sheet').classList.remove('open');
-}
-
-function addTip(item) {
-  const ta = document.getElementById('sub-geladeira');
-  const val = ta.value.trim();
-  ta.value = val ? val + ', ' + item : item;
-  ta.focus();
-}
-
-document.getElementById('sub-panel')?.addEventListener('touchend', e => {
-  if (e.changedTouches[0].clientY - subTouchY > 70) fecharSub();
-}, { passive: true });
-</script>
-
-
-
-
-<script>
-// ════════════════════════════════════════════
-// CONEXÃO COM A API — App do Paciente
-// ════════════════════════════════════════════
-
-
-// ════════════════════════════════════════════
-//  AI SUBSTITUIÇÃO DE ALIMENTOS
-// ════════════════════════════════════════════
-
-function abrirSubstituicao(nome, qty, kcal) {
-  subFoodAtual = { nome, qty, kcal };
-  document.getElementById('sub-food-tag').textContent = `${nome} · ${qty}`;
-  document.getElementById('sub-geladeira').value = '';
-  document.getElementById('sub-result').innerHTML = '';
-  document.getElementById('sub-btn').disabled = false;
-  document.getElementById('sub-btn').innerHTML = `<svg id="sub-icon" viewBox="0 0 20 20"><path d="M10 2a8 8 0 1 0 0 16A8 8 0 0 0 10 2zM10 6v4l3 3"/></svg>Buscar substituições com IA`;
-  document.getElementById('sub-sheet').classList.add('open');
-}
-
-function fecharSubstituicao(e) {
-  if (e && e.target !== document.getElementById('sub-sheet')) return;
-  document.getElementById('sub-sheet').classList.remove('open');
-}
-
-function addTip(item) {
-  const ta = document.getElementById('sub-geladeira');
-  const val = ta.value.trim();
-  ta.value = val ? val + ', ' + item : item;
-  ta.focus();
-}
-
-
-
-// Fecha com swipe down no handle
-let subStartY = 0;
-document.getElementById('sub-box')?.addEventListener('touchstart', e=>{
-  subStartY = e.touches[0].clientY;
-}, {passive:true});
-document.getElementById('sub-box')?.addEventListener('touchend', e=>{
-  const dy = e.changedTouches[0].clientY - subStartY;
-  if(dy > 80) document.getElementById('sub-sheet').classList.remove('open');
-}, {passive:true});
 </script>
 
 </body>
