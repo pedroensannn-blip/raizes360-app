@@ -86,6 +86,20 @@ body{
 .sub-obs-app{margin:0 16px 16px;background:#f0ebf8;border-radius:10px;padding:10px 13px;font-size:12px;color:#5a3e8a;line-height:1.45}
 .fr-name-sub{text-decoration:underline dotted #c4b0e8}
 
+
+/* ── Botões de ação das refeições ── */
+.mc-actions{display:flex;gap:8px;padding:10px 14px;border-top:1px solid #f5f5f5}
+.mc-btn{flex:1;padding:11px 8px;border-radius:50px;font-size:12px;font-weight:700;font-family:'Inter',sans-serif;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:all .15s;-webkit-tap-highlight-color:transparent}
+.mc-btn:active{transform:scale(.96)}
+.mc-btn.primary{background:var(--mint);color:white;box-shadow:0 3px 12px rgba(45,204,180,.3)}
+.mc-btn.secondary{background:#f5f0ff;color:#7b5ea7;border:1.5px solid #e8e0f5}
+.mc-btn svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+
+/* ── Botões de água funcionais ── */
+.wh-btn{flex:1;padding:7px 4px;background:rgba(255,255,255,.18);border:1.5px solid rgba(255,255,255,.3);border-radius:50px;font-size:10px;font-weight:700;color:white;text-align:center;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;-webkit-tap-highlight-color:transparent;user-select:none}
+.wh-btn:active{background:rgba(255,255,255,.4);transform:scale(.94)}
+.wh-btn.main{background:rgba(255,255,255,.32)}
+
 /* ── LOGIN ── */
 .login-screen{position:absolute;inset:0;background:var(--white);z-index:60;display:flex;flex-direction:column;overflow:hidden}
 .login-hero{background:linear-gradient(155deg,#1d3461 0%,var(--purple) 60%,var(--mint-dark) 100%);padding:52px 32px 36px;flex-shrink:0;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
@@ -732,9 +746,9 @@ body{
       <span class="badge" style="background:rgba(255,255,255,.2);color:white">Dia 4</span>
     </div>
     <div class="water-hero">
-      <div class="wh-row"><div class="wh-ico"><svg viewBox="0 0 16 16"><path d="M8 1C5 5 3 7.5 3 10a5 5 0 0 0 10 0c0-2.5-2-5-5-9z"/></svg></div><div class="wh-lbl">Hidratacao diaria</div><div class="wh-val">1.400<span style="font-size:11px;opacity:.6"> / 2.500ml</span></div></div>
-      <div class="wh-track"><div class="wh-fill" style="width:56%"></div></div>
-      <div class="wh-btns"><div class="wh-btn">+150ml</div><div class="wh-btn main">+200ml</div><div class="wh-btn">+300ml</div><div class="wh-btn">+500ml</div></div>
+      <div class="wh-row"><div class="wh-ico"><svg viewBox="0 0 16 16"><path d="M8 1C5 5 3 7.5 3 10a5 5 0 0 0 10 0c0-2.5-2-5-5-9z"/></svg></div><div class="wh-lbl">Hidratacao diaria</div><div class="wh-val" id="wh-val">1.400<span style="font-size:11px;opacity:.6"> / 2.500ml</span></div></div>
+      <div class="wh-track"><div class="wh-fill" id="wh-fill" style="width:56%"></div></div>
+      <div class="wh-btns"><div class="wh-btn" onclick="addAgua(150)">+150ml</div><div class="wh-btn main" onclick="addAgua(200)">+200ml</div><div class="wh-btn" onclick="addAgua(300)">+300ml</div><div class="wh-btn" onclick="addAgua(500)">+500ml</div></div>
     </div>
   </div>
   <div class="scroll" style="padding-bottom:16px">
@@ -757,7 +771,14 @@ body{
         <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Pao integral</div><div class="fr-qty">2 fatias</div></div></div>
         <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Frutas vermelhas</div><div class="fr-qty">1 xicara</div></div><div class="fr-kcal">60 kcal</div></div>
       </div>
-      <div class="mc-actions"><button class="mc-btn primary">Refeicao concluida</button><button class="mc-btn secondary" onclick="abrirCamera(this)">📷 Foto do prato</button></div>
+      <div class="mc-actions">
+        <button class="mc-btn primary" onclick="marcarRefeicao(this)">
+          <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Refeição concluída
+        </button>
+        <button class="mc-btn secondary" onclick="abrirCamera(this)">
+          <svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="10" rx="2"/><circle cx="8" cy="9" r="2.5"/><path d="M5 4l1-2h4l1 2"/></svg>Foto
+        </button>
+      </div>
     </div>
     <div class="meal-card">
       <div class="mc-head"><div class="mc-ico" style="background:var(--n100)"><svg style="stroke:var(--n500)" viewBox="0 0 18 18"><path d="M4 2v14M14 2v5a4 4 0 0 1-4 4H4"/></svg></div><div class="mc-name">Almoco</div><div class="mc-time">12h00</div><div class="mc-dot" style="background:var(--n200)"></div></div>
@@ -766,7 +787,14 @@ body{
         <div class="fr"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Arroz integral</div><div class="fr-qty">4 colheres</div></div></div>
         <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Folhas verdes escuras</div><div class="fr-qty">2 xicaras</div></div><div class="fr-kcal">20 kcal</div></div>
       </div>
-      <div class="mc-actions"><button class="mc-btn secondary" onclick="abrirCamera(this)">📷 Foto do prato</button><button class="mc-btn primary">Marcar consumido</button></div>
+      <div class="mc-actions">
+        <button class="mc-btn primary" onclick="marcarRefeicao(this)">
+          <svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Marcar consumido
+        </button>
+        <button class="mc-btn secondary" onclick="abrirCamera(this)">
+          <svg viewBox="0 0 16 16"><rect x="2" y="4" width="12" height="10" rx="2"/><circle cx="8" cy="9" r="2.5"/><path d="M5 4l1-2h4l1 2"/></svg>Foto
+        </button>
+      </div>
     </div>
   </div>
   <div class="nav">
@@ -2983,8 +3011,83 @@ async function apiFetch(path, options) {
 }
 
 // ════════════════════════════════════════════
-// SUBSTITUIÇÕES — lê do localStorage (gravado pelo dashboard)
+// ÁGUA — controle de hidratação
 // ════════════════════════════════════════════
+var _aguaAtual = 1400;
+var _aguaMeta  = 2500;
+
+function addAgua(ml) {
+  _aguaAtual = Math.min(_aguaAtual + ml, _aguaMeta);
+  var pct = Math.round((_aguaAtual / _aguaMeta) * 100);
+
+  var valEl  = document.getElementById('wh-val');
+  var fillEl = document.getElementById('wh-fill');
+
+  if (valEl)  valEl.innerHTML = _aguaAtual.toLocaleString('pt-BR') + '<span style="font-size:11px;opacity:.6"> / ' + _aguaMeta.toLocaleString('pt-BR') + 'ml</span>';
+  if (fillEl) fillEl.style.width = pct + '%';
+
+  // Feedback haptico / visual
+  if (fillEl) {
+    fillEl.style.transition = 'width .4s cubic-bezier(.4,0,.2,1)';
+  }
+  if (_aguaAtual >= _aguaMeta) {
+    showToastApp('🎉 Meta de hidratação atingida! +15 pts');
+  } else {
+    showToastApp('+' + ml + 'ml registrado · ' + pct + '% da meta');
+  }
+
+  // Salva localmente
+  try { localStorage.setItem('r360_agua_' + new Date().toDateString(), _aguaAtual); } catch(e) {}
+}
+
+// Carrega água salva do dia
+document.addEventListener('DOMContentLoaded', function() {
+  try {
+    var saved = localStorage.getItem('r360_agua_' + new Date().toDateString());
+    if (saved) {
+      _aguaAtual = parseInt(saved) || 1400;
+      var pct    = Math.round((_aguaAtual / _aguaMeta) * 100);
+      var valEl  = document.getElementById('wh-val');
+      var fillEl = document.getElementById('wh-fill');
+      if (valEl)  valEl.innerHTML = _aguaAtual.toLocaleString('pt-BR') + '<span style="font-size:11px;opacity:.6"> / ' + _aguaMeta + 'ml</span>';
+      if (fillEl) fillEl.style.width = pct + '%';
+    }
+  } catch(e) {}
+});
+
+// ════════════════════════════════════════════
+// REFEIÇÃO — marcar como concluída
+// ════════════════════════════════════════════
+function marcarRefeicao(btn) {
+  var card    = btn.closest('.meal-card');
+  var dot     = card ? card.querySelector('.mc-dot') : null;
+  var already = btn.dataset.done === '1';
+
+  if (already) {
+    // Desmarcar
+    btn.innerHTML = '<svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Marcar consumido';
+    btn.style.background = 'var(--mint)';
+    if (dot) dot.style.background = 'var(--n200)';
+    btn.dataset.done = '0';
+  } else {
+    // Marcar
+    btn.innerHTML = '<svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Concluída ✓';
+    btn.style.background = '#16a34a';
+    btn.style.boxShadow  = '0 3px 12px rgba(22,163,74,.3)';
+    if (dot) { dot.style.background = '#16a34a'; dot.style.boxShadow = '0 0 0 3px rgba(22,163,74,.2)'; }
+    btn.dataset.done = '1';
+    showToastApp('✅ Refeição registrada! +12 pts');
+  }
+}
+
+function showToastApp(msg) {
+  var t = document.createElement('div');
+  t.style.cssText = 'position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:white;padding:10px 18px;border-radius:50px;font-size:13px;font-weight:600;z-index:300;white-space:nowrap;box-shadow:0 4px 20px rgba(0,0,0,.25);pointer-events:none;transition:opacity .3s';
+  t.textContent = msg;
+  document.body.appendChild(t);
+  setTimeout(function(){ t.style.opacity='0'; }, 2200);
+  setTimeout(function(){ t.remove(); }, 2500);
+}
 function abrirSubOpcoes(el) {
   var nome = el ? el.textContent.trim() : '';
   var subs = {};
