@@ -88,10 +88,10 @@ body{
 
 /* ── LOGIN ── */
 .login-screen{position:absolute;inset:0;background:var(--white);z-index:60;display:flex;flex-direction:column;overflow:hidden}
-.login-hero{background:linear-gradient(155deg,#1d3461 0%,var(--purple) 60%,var(--mint-dark) 100%);padding:52px 32px 36px;flex-shrink:0;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;text-align:center}
+.login-hero{background:linear-gradient(155deg,#1d3461 0%,var(--purple) 60%,var(--mint-dark) 100%);padding:52px 32px 36px;flex-shrink:0;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
 .login-hero::before{content:'';position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06);top:-60px;right:-60px}
 .login-hero::after{content:'';position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.04);bottom:-40px;left:-30px}
-.login-logo{width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin-bottom:16px;position:relative}
+.login-logo{width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative}
 .login-logo svg{width:32px;height:32px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .login-brand{font-size:26px;font-weight:800;color:white;letter-spacing:-.4px;margin-bottom:4px;position:relative}
 .login-sub{font-size:13px;color:rgba(255,255,255,.6);position:relative}
@@ -514,7 +514,7 @@ body{
 
   <div class="login-hero">
     <div class="sb" style="padding:0;position:relative;width:100%"><div class="sb-t" style="color:white">9:41</div><div class="sb-i" style="color:rgba(255,255,255,.7)">●●● ▲ ■</div></div>
-    <div style="margin-top:20px">
+    <div style="margin-top:20px;display:flex;flex-direction:column;align-items:center;width:100%">
       <div class="login-logo">
         <svg viewBox="0 0 24 24"><path d="M12 2C9 6 7 9 7 12a5 5 0 0 0 10 0c0-3-2-6-5-10z"/></svg>
       </div>
@@ -525,31 +525,23 @@ body{
 
   <div class="login-body">
     <div>
-      <div class="login-title">Bem-vinda de volta</div>
-      <div class="login-desc">Entre com as credenciais enviadas pelo seu nutricionista</div>
+      <div class="login-title">Bem-vindo(a)!</div>
+      <div class="login-desc">Digite seu nome e data de nascimento para acessar</div>
     </div>
 
-    <!-- Banner primeiro acesso -->
-    <div class="first-access-banner" id="first-access-banner">
-      <svg viewBox="0 0 20 20"><circle cx="10" cy="10" r="8"/><line x1="10" y1="6" x2="10" y2="10"/><line x1="10" y1="14" x2="10" y2="14"/></svg>
-      <span>Este é seu primeiro acesso. Você precisará criar uma nova senha após entrar.</span>
-    </div>
-
-    <!-- Erro de login -->
-    <div class="login-error" id="login-error">E-mail ou senha incorretos. Verifique os dados enviados pelo seu nutricionista.</div>
+<!-- Erro de login -->
+    <div class="login-error" id="login-error">Nome ou data de nascimento incorretos. Verifique seus dados.</div>
 
     <!-- Campos -->
     <div class="lf">
-      <div class="lf-label">E-mail</div>
-      <input class="lf-input" id="login-email" type="email" placeholder="seuemail@email.com" autocomplete="email">
+      <div class="lf-label">Nome completo</div>
+      <input class="lf-input" id="login-nome" type="text" placeholder="Seu nome completo" autocomplete="name">
     </div>
 
     <div class="lf">
-      <div style="display:flex;justify-content:space-between;align-items:center">
-        <div class="lf-label">Senha</div>
-        <div style="font-size:11px;font-weight:600;color:var(--mint-dark);cursor:pointer">Esqueci a senha</div>
-      </div>
-      <input class="lf-input" id="login-pass" type="password" placeholder="••••••••" autocomplete="current-password">
+      <div class="lf-label">Data de nascimento</div>
+      <input class="lf-input" id="login-nasc" type="text" placeholder="DD/MM/AAAA" maxlength="10"
+        oninput="this.value=this.value.replace(/[^0-9\/]/g,'').replace(/^(\d{2})(\d)/,'$1/$2').replace(/^(\d{2}\/\d{2})(\d)/,'$1/$2')">
     </div>
 
     <button class="login-btn" id="login-btn" onclick="doLogin()">Entrar</button>
@@ -765,7 +757,7 @@ body{
         <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Pao integral</div><div class="fr-qty">2 fatias</div></div></div>
         <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Frutas vermelhas</div><div class="fr-qty">1 xicara</div></div><div class="fr-kcal">60 kcal</div></div>
       </div>
-      <div class="mc-actions"><button class="mc-btn primary">Refeicao concluida</button><button class="mc-btn secondary">Foto do prato</button></div>
+      <div class="mc-actions"><button class="mc-btn primary">Refeicao concluida</button><button class="mc-btn secondary" onclick="abrirCamera(this)">📷 Foto do prato</button></div>
     </div>
     <div class="meal-card">
       <div class="mc-head"><div class="mc-ico" style="background:var(--n100)"><svg style="stroke:var(--n500)" viewBox="0 0 18 18"><path d="M4 2v14M14 2v5a4 4 0 0 1-4 4H4"/></svg></div><div class="mc-name">Almoco</div><div class="mc-time">12h00</div><div class="mc-dot" style="background:var(--n200)"></div></div>
@@ -774,7 +766,7 @@ body{
         <div class="fr"><div class="fr-dot" style="background:var(--orange)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Arroz integral</div><div class="fr-qty">4 colheres</div></div></div>
         <div class="fr"><div class="fr-dot" style="background:var(--mint-mid)"></div><div class="fr-info"><div class="fr-name fr-name-sub" onclick="abrirSubOpcoes(this)">Folhas verdes escuras</div><div class="fr-qty">2 xicaras</div></div><div class="fr-kcal">20 kcal</div></div>
       </div>
-      <div class="mc-actions"><button class="mc-btn secondary">Foto do prato</button><button class="mc-btn primary">Marcar consumido</button></div>
+      <div class="mc-actions"><button class="mc-btn secondary" onclick="abrirCamera(this)">📷 Foto do prato</button><button class="mc-btn primary">Marcar consumido</button></div>
     </div>
   </div>
   <div class="nav">
@@ -2052,46 +2044,42 @@ const DEMO_USERS = [
 let currentUser = null;
 
 function doLogin() {
-  const email = document.getElementById('login-email').value.trim().toLowerCase();
-  const pass  = document.getElementById('login-pass').value;
-  const btn   = document.getElementById('login-btn');
-  const err   = document.getElementById('login-error');
+  var nome  = (document.getElementById('login-nome')||{value:''}).value.trim();
+  var nasc  = (document.getElementById('login-nasc')||{value:''}).value.trim();
+  var btn   = document.getElementById('login-btn');
+  var err   = document.getElementById('login-error');
+
   err.classList.remove('show');
-  if (!email || !pass) {
-    err.textContent = 'Preencha e-mail e senha para continuar.';
+  if (!nome || !nasc) {
+    err.textContent = 'Preencha seu nome e data de nascimento.';
     err.classList.add('show'); return;
   }
+
   btn.disabled = true; btn.textContent = 'Entrando...';
 
-  apiFetch('/auth/login', { method:'POST', body: JSON.stringify({ email, password: pass }) })
-    .then(data => {
-      authToken = data.token;
-      localStorage.setItem('r360_app_token', authToken);
-      currentUser = { email, name: data.user.name, firstAccess: data.user.firstAccess };
-      btn.disabled = false; btn.textContent = 'Entrar';
-      if (data.user.firstAccess) {
-        document.getElementById('cp-name').textContent = data.user.name;
-        document.getElementById('change-pass-overlay').classList.add('open');
-      } else {
-        enterApp(data.user.name);
-        carregarOrientacoes();
-      }
-    })
-    .catch(() => {
-      // Fallback demo (sem API conectada ainda)
-      const user = DEMO_USERS.find(u => u.email === email && u.password === pass);
-      btn.disabled = false; btn.textContent = 'Entrar';
-      if (!user) {
-        err.textContent = 'E-mail ou senha incorretos. Verifique os dados enviados pelo seu nutricionista.';
-        err.classList.add('show');
-        return;
-      }
-      currentUser = user;
-      if (user.firstAccess) {
-        document.getElementById('cp-name').textContent = user.name;
-        document.getElementById('change-pass-overlay').classList.add('open');
-      } else { enterApp(user.name); }
-    });
+  // Try API first
+  apiFetch('/auth/login', {
+    method: 'POST',
+    body: JSON.stringify({ nome: nome, nascimento: nasc })
+  }).then(function(data) {
+    authToken = data.token;
+    localStorage.setItem('r360_app_token', authToken);
+    currentUser = { name: data.user.name };
+    btn.disabled = false; btn.textContent = 'Entrar';
+    enterApp(data.user.name);
+    carregarOrientacoes();
+  }).catch(function() {
+    // Fallback local — aceita qualquer nome + data válida (demo)
+    btn.disabled = false; btn.textContent = 'Entrar';
+    if (nome.length >= 3 && nasc.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
+      var primeiroNome = nome.split(' ')[0];
+      currentUser = { name: nome };
+      enterApp(primeiroNome);
+    } else {
+      err.textContent = 'Nome ou data de nascimento inválidos.';
+      err.classList.add('show');
+    }
+  });
 }
 
 async function carregarOrientacoes() {
@@ -2191,8 +2179,8 @@ document.addEventListener('DOMContentLoaded', () => {
     setReq('req-upper', /[A-Z]/.test(this.value));
     setReq('req-num', /[0-9]/.test(this.value));
   });
-  document.getElementById('login-pass')?.addEventListener('keydown', e => { if(e.key==='Enter') doLogin(); });
-  document.getElementById('login-email')?.addEventListener('keydown', e => { if(e.key==='Enter') document.getElementById('login-pass')?.focus(); });
+  document.getElementById('login-nasc')?.addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
+  document.getElementById('login-nome')?.addEventListener('keydown', function(e){ if(e.key==='Enter') document.getElementById('login-nasc')?.focus(); });
 });
 
 // ── NAVIGATION ─────────────────────────
@@ -3032,6 +3020,98 @@ function fecharSubOpcoes() {
   document.getElementById('app-sub-sheet').classList.remove('open');
   document.body.style.overflow = '';
 }
+
+// ════════════════════════════════════════════
+// CÂMERA — Foto do prato
+// ════════════════════════════════════════════
+var _cameraRefeicao = '';
+
+function abrirCamera(btn) {
+  var mc   = btn.closest('.meal-card') || btn.closest('.mc-actions');
+  var nome = mc ? (mc.querySelector('.mc-name') || {textContent:''}).textContent.trim() : '';
+  _cameraRefeicao = nome;
+
+  var label = document.getElementById('camera-meal-label');
+  if (label) label.textContent = nome || 'Refeição';
+
+  // Reset state
+  var img  = document.getElementById('camera-preview-img');
+  var ph   = document.getElementById('camera-placeholder');
+  var suc  = document.getElementById('camera-sucesso');
+  var env  = document.getElementById('btn-enviar-foto');
+  var inp  = document.getElementById('camera-input');
+  if (img)  { img.src = ''; img.style.display = 'none'; }
+  if (ph)   { ph.style.display = 'flex'; ph.style.flexDirection = 'column'; ph.style.alignItems = 'center'; }
+  if (suc)  suc.style.display = 'none';
+  if (env)  { env.disabled = true; env.style.background = '#ccc'; env.style.cursor = 'not-allowed'; }
+  if (inp)  inp.value = '';
+
+  document.getElementById('camera-sheet').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function fecharCamera() {
+  document.getElementById('camera-sheet').classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function selecionarGaleria() {
+  var inp = document.getElementById('camera-input');
+  if (inp) { inp.removeAttribute('capture'); inp.click(); }
+}
+
+function previewFoto(input) {
+  if (!input.files || !input.files[0]) return;
+  var file   = input.files[0];
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var img = document.getElementById('camera-preview-img');
+    var ph  = document.getElementById('camera-placeholder');
+    var env = document.getElementById('btn-enviar-foto');
+    if (img) { img.src = e.target.result; img.style.display = 'block'; }
+    if (ph)  ph.style.display = 'none';
+    if (env) { env.disabled = false; env.style.background = 'var(--mint)'; env.style.cursor = 'pointer'; }
+  };
+  reader.readAsDataURL(file);
+}
+
+function enviarFoto() {
+  var inp = document.getElementById('camera-input');
+  if (!inp || !inp.files || !inp.files[0]) return;
+
+  var env  = document.getElementById('btn-enviar-foto');
+  var envi = document.getElementById('camera-enviando');
+  var suc  = document.getElementById('camera-sucesso');
+  var area = document.getElementById('camera-preview-area');
+
+  if (env)  { env.disabled = true; env.style.background = '#aaa'; }
+  if (envi) envi.style.display = 'flex';
+
+  // Salva localmente para o nutri ver no dash
+  var reader = new FileReader();
+  reader.onload = function(e) {
+    var fotos = [];
+    try { fotos = JSON.parse(localStorage.getItem('r360_fotos') || '[]'); } catch(ex) {}
+    fotos.unshift({
+      refeicao:  _cameraRefeicao,
+      dataUrl:   e.target.result,
+      enviadoEm: new Date().toISOString(),
+      status:    'pendente'
+    });
+    if (fotos.length > 20) fotos = fotos.slice(0, 20); // mantém últimas 20
+    localStorage.setItem('r360_fotos', JSON.stringify(fotos));
+
+    setTimeout(function() {
+      if (envi) envi.style.display = 'none';
+      if (env)  env.style.display = 'none';
+      if (suc)  suc.style.display = 'block';
+
+      // Fecha após 2s
+      setTimeout(fecharCamera, 2000);
+    }, 1200);
+  };
+  reader.readAsDataURL(inp.files[0]);
+}
 </script>
 
 
@@ -3046,6 +3126,60 @@ function fecharSubOpcoes() {
     </div>
     <div class="sub-opts" id="sub-opts-lista"></div>
     <div id="sub-obs-app" class="sub-obs-app" style="display:none"></div>
+  </div>
+</div>
+
+<!-- SHEET: FOTO DO PRATO -->
+<div class="sub-sheet" id="camera-sheet">
+  <div class="sub-backdrop" onclick="fecharCamera()"></div>
+  <div class="sub-panel" style="padding-bottom:env(safe-area-inset-bottom)">
+    <div class="sub-handle" onclick="fecharCamera()"></div>
+    <div style="padding:14px 20px 10px;border-bottom:1px solid #f0f0f0">
+      <div style="font-size:16px;font-weight:800;color:#1a1a2e">📷 Foto do prato</div>
+      <div style="font-size:12px;color:#888;margin-top:3px" id="camera-meal-label">Refeição</div>
+    </div>
+
+    <!-- Preview da foto -->
+    <div id="camera-preview-area" style="margin:16px 20px;border-radius:16px;overflow:hidden;background:#f5f5f5;aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;position:relative">
+      <img id="camera-preview-img" style="width:100%;height:100%;object-fit:cover;display:none">
+      <div id="camera-placeholder" style="text-align:center;color:#aaa;padding:20px">
+        <div style="font-size:48px;margin-bottom:8px">🍽️</div>
+        <div style="font-size:13px">Nenhuma foto selecionada</div>
+      </div>
+      <div id="camera-enviando" style="display:none;position:absolute;inset:0;background:rgba(0,0,0,.5);align-items:center;justify-content:center;flex-direction:column;gap:8px">
+        <div style="font-size:24px">⏳</div>
+        <div style="font-size:13px;font-weight:700;color:white">Enviando...</div>
+      </div>
+    </div>
+
+    <!-- Input file oculto -->
+    <input type="file" id="camera-input" accept="image/*" capture="environment"
+      style="display:none" onchange="previewFoto(this)">
+
+    <!-- Botões -->
+    <div style="display:flex;gap:10px;padding:0 20px 16px">
+      <button onclick="document.getElementById('camera-input').click()"
+        style="flex:1;padding:14px;border-radius:50px;background:var(--mint);color:white;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:Inter,sans-serif">
+        📷 Tirar foto
+      </button>
+      <button onclick="selecionarGaleria()"
+        style="flex:1;padding:14px;border-radius:50px;background:#f0f0f0;color:#444;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:Inter,sans-serif">
+        🖼️ Galeria
+      </button>
+    </div>
+    <div style="padding:0 20px 20px">
+      <button id="btn-enviar-foto" onclick="enviarFoto()" disabled
+        style="width:100%;padding:14px;border-radius:50px;background:#ccc;color:white;font-size:14px;font-weight:700;border:none;cursor:not-allowed;font-family:Inter,sans-serif;transition:all .2s">
+        Enviar para o nutricionista
+      </button>
+    </div>
+
+    <!-- Status enviado -->
+    <div id="camera-sucesso" style="display:none;padding:0 20px 24px;text-align:center">
+      <div style="font-size:36px;margin-bottom:8px">✅</div>
+      <div style="font-size:15px;font-weight:700;color:var(--mint-dark)">Foto enviada!</div>
+      <div style="font-size:12px;color:#888;margin-top:4px">Seu nutricionista receberá em breve.</div>
+    </div>
   </div>
 </div>
 </body>
