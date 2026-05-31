@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Raizes 360 · App Completo</title>
+<title>CONVIDA · App Completo</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -341,9 +341,9 @@ body{
 
 /* ── LOGIN ── */
 .login-screen{position:absolute;inset:0;background:var(--white);z-index:60;display:flex;flex-direction:column;overflow:hidden}
-.login-hero{background:linear-gradient(155deg,#1d3461 0%,var(--purple) 60%,var(--mint-dark) 100%);padding:52px 32px 36px;flex-shrink:0;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
-.login-hero::before{content:'';position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.06);top:-60px;right:-60px}
-.login-hero::after{content:'';position:absolute;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.04);bottom:-40px;left:-30px}
+.login-hero{background:#c1440e;padding:52px 32px 36px;flex-shrink:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
+.login-hero::before{content:none}
+.login-hero::after{content:none}
 .login-logo{width:64px;height:64px;border-radius:20px;background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;position:relative}
 .login-logo svg{width:32px;height:32px;stroke:white;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 .login-brand{font-size:26px;font-weight:800;color:white;letter-spacing:-.4px;margin-bottom:4px;position:relative}
@@ -357,7 +357,7 @@ body{
 .lf-input:focus{border-color:var(--mint);background:var(--white)}
 .lf-input::placeholder{color:var(--n300)}
 .lf-input.error{border-color:var(--red);background:var(--red-light)}
-.login-btn{width:100%;padding:14px;border-radius:var(--r-pill);background:var(--mint);color:white;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 4px 16px rgba(45,204,180,.3);transition:opacity .15s,transform .1s;margin-top:4px}
+.login-btn{width:100%;padding:14px;border-radius:var(--r-pill);background:#c1440e;color:white;font-size:15px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;box-shadow:0 4px 16px rgba(193,68,14,.35);transition:opacity .15s,transform .1s;margin-top:4px}
 .login-btn:hover{opacity:.9}
 .login-btn:active{transform:scale(.98)}
 .login-btn:disabled{opacity:.5;cursor:not-allowed}
@@ -768,18 +768,34 @@ body{
   <div class="login-hero">
     <div class="sb" style="padding:0;position:relative;width:100%"><div class="sb-t" style="color:white">9:41</div><div class="sb-i" style="color:rgba(255,255,255,.7)">●●● ▲ ■</div></div>
     <div style="margin-top:20px;display:flex;flex-direction:column;align-items:center;width:100%">
-      <div class="login-logo">
-        <svg viewBox="0 0 24 24"><path d="M12 2C9 6 7 9 7 12a5 5 0 0 0 10 0c0-3-2-6-5-10z"/></svg>
-      </div>
-      <div class="login-brand">Raízes 360</div>
-      <div class="login-sub">Medicina do Estilo de Vida</div>
+      <div style="width:200px;height:200px"><svg id="Camada_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1080 1080">
+  <!-- Generator: Adobe Illustrator 30.2.1, SVG Export Plug-In . SVG Version: 2.1.1 Build 1)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #f2eacc;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M801.28,623.81c-8.85,8.85-18.11,17.22-31.26,18.54-65.35,6.53-74.66-84.76-47.86-126.64,16.19-25.31,50.7-37.53,75.53-16.54.65-15.45-.84-31.57-.02-46.95.12-2.3.63-9.24,1.29-10.89.68-1.71,2.12-2.45,2.37-2.64,2.43-1.85,4.8-1.72,10.87-1.79,9.39-.11,10.76-.52,13.82.64,0,0,2.64,1,5.11,2.93,8.53,6.65,3.06,171.29,2.34,192.23-.81,4.04-2.47,6.41-6.73,6.89-4.28.48-15.85.52-20.03-.06-2.08-.29-5.42-2.46-5.42-4.61v-11.1ZM774.62,518.7c-37.22,3.34-39.62,81.26-10.37,91.63,14.82,5.26,32.54-4.54,34.16-20.56,1.32-13.06,1.08-39.04.03-52.31-.97-12.37-11.76-19.85-23.83-18.77Z"/>
+  <path class="st0" d="M934.56,558.62c.29-11.38,2.82-24.1-5.71-33.32-9.92-10.72-30.53-8.93-42.08-1.91-3.64,2.22-7.08,6.99-11.33,7.34-9.48.78-21.46-4.7-17.9-15.79,9.96-31,74.05-33.81,96.38-15.41,26.65,21.95,12.99,77.99,16.47,108.89.98,8.67,11.44,6.63,13.29,15.36,3.23,15.22-14.79,20.85-26.78,17.46-9.36-2.64-13.3-10.3-17.68-18.13-12.22,14.84-28.85,21.06-48,20.04-31.63-1.68-48.51-25.26-43.18-56.04,6.03-34.8,51.8-44.45,80.06-31.69,1.08.49,5.83,3.91,6.46,3.21ZM907.91,573.16c-35.61,1.17-34.76,44.96,1.21,41.33,16.06-1.62,28.92-15.2,26.12-31.83-1.32-7.84-21.02-9.71-27.33-9.51Z"/>
+  <path class="st0" d="M417.21,509.2c8.97-12.08,18.51-19.54,34.05-20.76,84.38-6.66,53.06,90.83,59.11,142.18-.44,4.2-3.05,8.44-7.51,8.97-3.86.46-19.47.63-22.93-.03-3.31-.63-5.15-5.11-5.42-8.19-2.29-26.93,4.48-66.43-1.76-91.36-7.57-30.27-53.01-25.66-55.57,11.8-1.68,24.61,1.82,51.42.06,75.99-.29,3.98-1.03,9.49-5.23,11.25-3.96,1.66-22.74,2.02-26.5.35-2.79-1.24-5.05-4.94-4.88-8.02l.18-134.54c.55-2.48,3.59-4.39,5.98-4.76,4.54-.7,17.37-.52,22.2-.07,3.13.29,8.21,2.48,8.21,6.12v11.1Z"/>
+  <path class="st0" d="M285.93,486.49c56.69-5.04,95.49,41.44,84.36,96.52-2.02,10-8.21,27.61-20.06,28.66l-111.8-.04c-12.88-1.3-19.12-19.65-20.92-30.66-7.49-45.78,20.64-90.23,68.42-94.47ZM288.07,518.71c-26.83,3.22-46.49,33.15-39.45,59.1,2.54,9.36,6.27,11,15.58,11.65,16.51,1.14,43.07,1.23,59.53,0,12.63-.94,15.77-6.89,16.8-19.02,2.69-31.7-20.41-55.57-52.46-51.72Z"/>
+  <path class="st0" d="M583.46,599.45l33.81-101.22c1.4-2.69,3.55-4.98,6.71-5.47,4.67-.72,18.7-.56,23.61-.05,2.92.31,3.76.89,3.96,3.96-13.68,45.62-30.17,90.68-46.46,135.52-2.07,3.38-5.15,6.5-9.28,7.2-5.25.89-20.05.7-25.65.2-5.07-.45-8.31-2.74-10.95-6.96-13.44-41.96-33.01-84.88-44.75-127.19-1.51-5.44-4.84-12.01,3.38-12.76,5.85-.54,19.43-.67,25.13.02,8.78,1.05,11.48,16.65,13.97,24,9.28,27.42,17.3,55.31,26.51,82.74Z"/>
+  <path class="st0" d="M164.83,487.21c13.73-.91,29.05,1.7,40.93,8.8,4.58,2.74,14.3,9.91,14.29,15.7,0,3.22-11.2,21.29-14.2,22.24-5.96,1.9-12.13-6.04-16.86-9.01-20.22-12.72-44.89-1.15-53.23,19.89-13.61,34.32,10.77,78.8,50.69,62.85,6.76-2.7,9.4-7.11,14.4-9.96,11.31-6.45,22.51,16.04,17.02,24.89-5.56,8.97-23.82,17.33-34.02,19-55.68,9.12-91.33-28.75-87.67-83.34,2.57-38.33,29.62-68.49,68.64-71.07Z"/>
+  <path class="st0" d="M663.22,494.38c5.44-7.23,22.52-3.26,33.48.14v136.13c-.35,3.69-1.64,5.96-2.99,7.39-7,7.45-25.19,4.26-32.11-5.31-3.87-5.36-3.47-11.71-3.32-14.37,2.22-39.57.35-79.33,3.23-118.86.07-.99.22-3.15,1.7-5.11Z"/>
+  <path class="st0" d="M236.4,630.51c-1.67-2.68-2.29-5.36-2.55-7.25h121.06c-1.1,1.85-2.91,4.53-5.68,7.22-10.06,9.76-22.64,9.69-54.85,9.52-39.7-.21-52.24-.27-57.98-9.49Z"/>
+  <path class="st0" d="M675.71,437.04c31.03-4.2,32.59,43.61,3.28,43.95-27.06.31-27.72-40.64-3.28-43.95Z"/>
+</svg></div>
+      
+      <div style="font-size:13px;font-weight:600;color:rgba(255,255,255,.75);text-align:center;margin-top:16px;line-height:1.5">Você foi convidado a viver melhor.<br><span style="font-size:11px;color:rgba(255,255,255,.45)">Programa exclusivo de saúde integral</span></div>
     </div>
   </div>
 
   <div class="login-body">
     <div>
-      <div class="login-title">Bem-vindo(a)!</div>
-      <div class="login-desc">Digite seu nome e data de nascimento para acessar</div>
+      <div class="login-title">Bem-vindo(a) ao CONVIDA</div>
+      <div class="login-desc">Use os dados enviados pelo seu profissional de saúde para acessar</div>
     </div>
 
 <!-- Erro de login -->
@@ -801,7 +817,7 @@ body{
 
     <div class="login-footer">
       Problemas para acessar? Fale com seu nutricionista.<br>
-      <span style="color:var(--mint-dark);font-weight:600">Juan Carlos · juan@raizes360.com</span>
+      <span style="color:var(--mint-dark);font-weight:600">Juan Carlos · juan@convida.com</span>
     </div>
   </div>
 
@@ -1354,7 +1370,7 @@ body{
           <svg viewBox="0 0 20 20" style="width:20px;height:20px;stroke:var(--n400);fill:none;stroke-width:1.8;stroke-linecap:round"><path d="M10 2C7 6 5 8.5 5 11a5 5 0 0 0 10 0c0-2.5-2-5-5-9z"/></svg>
         </div>
         <div style="flex:1;min-width:0">
-          <div style="font-size:13px;font-weight:600;color:var(--n700);margin-bottom:2px">Kit Raízes 360 exclusivo</div>
+          <div style="font-size:13px;font-weight:600;color:var(--n700);margin-bottom:2px">Kit CONVIDA exclusivo</div>
           <div style="font-size:11px;color:var(--n400)">Programa completo · 12 meses concluídos</div>
         </div>
         <div style="font-size:10px;font-weight:700;padding:3px 10px;border-radius:var(--r-pill);background:var(--n100);color:var(--n400)">Bloqueada</div>
@@ -2069,7 +2085,7 @@ body{
     <div class="sp-card" style="margin:0 22px 14px;padding:14px 16px;background:var(--white);box-shadow:var(--sh-xs);border-radius:var(--r-card)">
       <div style="font-size:10px;font-weight:700;color:var(--mint-dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:4px">Em andamento</div>
       <div style="font-size:18px;font-weight:800;color:var(--n800);margin-bottom:4px">Fase Crescimento</div>
-      <div style="font-size:12px;color:var(--n400);margin-bottom:12px">Mês 4 de 12 · Programa Raízes 360</div>
+      <div style="font-size:12px;color:var(--n400);margin-bottom:12px">Mês 4 de 12 · Programa CONVIDA</div>
       <div style="height:7px;background:var(--n100);border-radius:var(--r-pill);margin-bottom:6px"><div style="height:100%;width:33%;background:var(--mint);border-radius:var(--r-pill)"></div></div>
       <div style="display:flex;justify-content:space-between;font-size:11px;color:var(--n400)"><span>Início: Fev 2026</span><span style="font-weight:700;color:var(--mint-dark)">33% concluído</span></div>
     </div>
@@ -2280,8 +2296,8 @@ body{
     <div class="sp-section">Falar com suporte</div>
     <div class="sp-card" style="margin:0 22px 14px">
       <div class="sp-row" style="cursor:pointer"><div class="sp-row-info"><div class="sp-row-label">Chat com suporte</div><div class="sp-row-sub">Resposta em até 2 horas</div></div><div style="font-size:10px;font-weight:700;padding:3px 9px;border-radius:var(--r-pill);background:var(--mint-light);color:var(--mint-dark);white-space:nowrap">Online</div></div>
-      <div class="sp-row" style="cursor:pointer"><div class="sp-row-info"><div class="sp-row-label">Enviar e-mail</div><div class="sp-row-sub">suporte@raizes360.com.br</div></div><svg style="width:14px;height:14px;stroke:var(--n300);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0" viewBox="0 0 16 16"><polyline points="6,4 10,8 6,12"/></svg></div>
-      <div class="sp-row" style="cursor:pointer"><div class="sp-row-info"><div class="sp-row-label">Versão do app</div><div class="sp-row-sub">Raízes 360 · v1.0.0 Beta</div></div><div style="font-size:11px;color:var(--n400);white-space:nowrap">v1.0.0</div></div>
+      <div class="sp-row" style="cursor:pointer"><div class="sp-row-info"><div class="sp-row-label">Enviar e-mail</div><div class="sp-row-sub">suporte@convida.com.br</div></div><svg style="width:14px;height:14px;stroke:var(--n300);fill:none;stroke-width:2;stroke-linecap:round;flex-shrink:0" viewBox="0 0 16 16"><polyline points="6,4 10,8 6,12"/></svg></div>
+      <div class="sp-row" style="cursor:pointer"><div class="sp-row-info"><div class="sp-row-label">Versão do app</div><div class="sp-row-sub">CONVIDA · v1.0.0 Beta</div></div><div style="font-size:11px;color:var(--n400);white-space:nowrap">v1.0.0</div></div>
     </div>
   </div>
 </div>
@@ -2305,8 +2321,8 @@ const colors = {
 
 // ── LOGIN ───────────────────────────────────────
 const DEMO_USERS = [
-  { email: 'ana@raizes360.com',   password: 'Raizes@2026', name: 'Ana Beatriz', firstAccess: true  },
-  { email: 'carla@raizes360.com', password: 'Carla@2026',  name: 'Carla Mendonça', firstAccess: false },
+  { email: 'ana@convida.com',   password: 'Raizes@2026', name: 'Ana Beatriz', firstAccess: true  },
+  { email: 'carla@convida.com', password: 'Carla@2026',  name: 'Carla Mendonça', firstAccess: false },
 ];
 let currentUser = null;
 
@@ -3228,7 +3244,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ════════════════════════════════════════════
 // CONEXÃO COM A API — App do Paciente
 // ════════════════════════════════════════════
-const API_URL = 'https://raizes360-api.onrender.com';
+const API_URL = 'https://convida-api.onrender.com';
 let authToken = localStorage.getItem('r360_app_token') || null;
 
 async function apiFetch(path, options) {
