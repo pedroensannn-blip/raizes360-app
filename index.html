@@ -2391,17 +2391,17 @@ function doLogin() {
     btn.disabled = false; btn.textContent = 'Entrar';
     enterApp(data.user.name);
     carregarOrientacoes();
-  }).catch(function() {
-    // Fallback local — aceita qualquer nome + data válida (demo)
+  }).catch(function(e) {
     btn.disabled = false; btn.textContent = 'Entrar';
-    if (nome.length >= 3 && nasc.match(/^\d{2}\/\d{2}\/\d{4}$/)) {
-      var primeiroNome = nome.split(' ')[0];
-      currentUser = { name: nome };
-      enterApp(primeiroNome);
+    var msg = (e && e.error) ? e.error : '';
+    if (msg === 'Nome não encontrado. Verifique com seu profissional.') {
+      err.textContent = 'Nome não encontrado. Verifique com seu nutricionista.';
+    } else if (msg === 'Data de nascimento incorreta.') {
+      err.textContent = 'Data de nascimento incorreta.';
     } else {
-      err.textContent = 'Nome ou data de nascimento inválidos.';
-      err.classList.add('show');
+      err.textContent = 'Não foi possível conectar. Verifique sua internet e tente novamente.';
     }
+    err.classList.add('show');
   });
 }
 
@@ -3336,7 +3336,7 @@ document.addEventListener('DOMContentLoaded', function() {
 // ════════════════════════════════════════════
 // CONEXÃO COM A API — App do Paciente
 // ════════════════════════════════════════════
-const API_URL = 'https://convida-api.onrender.com';
+const API_URL = 'https://raizes360-api.onrender.com';
 let authToken = localStorage.getItem('r360_app_token') || null;
 
 async function apiFetch(path, options) {
