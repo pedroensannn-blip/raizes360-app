@@ -100,6 +100,245 @@ body{
 .wh-btn:active{background:rgba(255,255,255,.4);transform:scale(.94)}
 .wh-btn.main{background:rgba(255,255,255,.32)}
 
+
+/* ════════════════════════════════════════════
+   EXERCÍCIO
+════════════════════════════════════════════ */
+.exerc-hero{background:linear-gradient(135deg,#5a3e8a,#7b5ea7);padding:52px 22px 18px;flex-shrink:0;position:relative;overflow:hidden}
+.exerc-hero::before{content:'';position:absolute;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.07);top:-40px;right:-30px}
+.weekly-sum{display:flex;gap:0;background:rgba(255,255,255,.14);border-radius:16px;border:1px solid rgba(255,255,255,.2);overflow:hidden;margin-top:14px}
+.ws{flex:1;padding:11px 8px;text-align:center;border-right:1px solid rgba(255,255,255,.15)}
+.ws:last-child{border-right:none}
+.ws-val{font-size:18px;font-weight:800;color:white;line-height:1}
+.ws-lbl{font-size:10px;color:rgba(255,255,255,.6);margin-top:3px;font-weight:600}
+.trail-card{background:white;border-radius:18px;margin:14px 16px 0;padding:16px;box-shadow:0 4px 20px rgba(0,0,0,.1)}
+.trail-ey{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--n400);margin-bottom:4px}
+.trail-title{font-size:18px;font-weight:800;color:var(--n800);margin-bottom:2px}
+.trail-sub{font-size:12px;color:var(--n500);margin-bottom:10px}
+.trail-bar{height:6px;background:var(--n100);border-radius:var(--r-pill);margin-bottom:6px}
+.trail-fill{height:100%;width:43%;background:linear-gradient(90deg,var(--purple),var(--mint));border-radius:var(--r-pill)}
+.trail-pt{font-size:11px;font-weight:700;color:var(--purple);margin-bottom:12px}
+.trail-acts{display:flex;gap:8px}
+.trail-btn{flex:1;padding:11px;border-radius:var(--r-pill);font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.trail-btn:active{transform:scale(.96)}
+.trail-btn.pri{background:var(--purple);color:white;box-shadow:0 3px 10px rgba(123,94,167,.3)}
+.trail-btn.gh{background:var(--purple-light,#f0ebf8);color:var(--purple)}
+.hab-card{background:white;border-radius:18px;margin:14px 16px 0;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.hab-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--n100)}
+.hab-title{font-size:13px;font-weight:700;color:var(--n700)}
+.hab-count{font-size:12px;font-weight:700;color:var(--purple)}
+.hab-row{display:flex;align-items:center;gap:10px;padding:11px 16px;border-bottom:1px solid var(--n50)}
+.hab-row:last-child{border-bottom:none}
+.hab-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.hab-name{font-size:12px;font-weight:600;color:var(--n700);flex:1}
+.hab-days{display:flex;gap:3px;flex-shrink:0}
+.hd{width:18px;height:18px;border-radius:6px;background:var(--n100)}
+.hd.d{background:var(--purple)}
+.hd.t{background:rgba(123,94,167,.3);border:1.5px dashed var(--purple)}
+.workout-card{display:flex;align-items:center;gap:12px;background:white;border-radius:14px;margin:8px 16px 0;padding:12px 14px;box-shadow:0 2px 8px rgba(0,0,0,.06);cursor:pointer;transition:all .15s}
+.workout-card:active{transform:scale(.98)}
+.wt-thumb{width:48px;height:48px;border-radius:13px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wt-thumb svg{width:22px;height:22px;fill:none;stroke-width:1.8;stroke-linecap:round}
+.wt-body{flex:1;min-width:0}
+.wt-title{font-size:13px;font-weight:700;color:var(--n800);margin-bottom:2px}
+.wt-meta{font-size:11px;color:var(--n400)}
+.wt-play{width:34px;height:34px;border-radius:50%;background:var(--n100);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.wt-play svg{width:11px;height:11px;fill:var(--n500);margin-left:2px}
+
+/* ════════════════════════════════════════════
+   CONEXÕES
+════════════════════════════════════════════ */
+.com-hero{background:linear-gradient(135deg,#e0a800,#c88f00);padding:52px 22px 18px;flex-shrink:0;position:relative;overflow:hidden}
+.com-hero::before{content:'';position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.08);top:-30px;right:-20px}
+.partner-card{background:white;border-radius:18px;margin:14px 16px 0;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.partner-label{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--n400);margin-bottom:10px}
+.partner-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.partner-ava{width:44px;height:44px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:white;flex-shrink:0}
+.partner-name{font-size:14px;font-weight:800;color:var(--n800)}
+.partner-meta{font-size:11px;color:var(--n400);margin-top:1px}
+.partner-streak{display:flex;align-items:center;gap:5px;margin-bottom:8px}
+.partner-streak-num{font-size:22px;font-weight:800;color:var(--orange)}
+.partner-streak-lbl{font-size:11px;color:var(--n500)}
+.partner-msg{font-size:13px;color:var(--n700);font-style:italic;background:var(--n50);border-radius:12px;padding:10px 12px;margin-bottom:10px;line-height:1.45}
+.partner-btns{display:flex;gap:8px}
+.partner-btn{flex:1;padding:9px;border-radius:var(--r-pill);font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s;text-align:center}
+.partner-btn:active{transform:scale(.96)}
+.partner-btn.pri{background:var(--mint);color:white}
+.partner-btn.gh{background:var(--n100);color:var(--n600)}
+.zoom-card{background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:18px;margin:14px 16px 0;padding:16px;color:white}
+.zoom-label{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;opacity:.7;margin-bottom:6px}
+.zoom-date{font-size:22px;font-weight:800;line-height:1.1}
+.zoom-meta{font-size:12px;opacity:.75;margin-top:3px;margin-bottom:14px}
+.zoom-btn{background:white;color:#2563eb;border:none;border-radius:var(--r-pill);padding:11px 28px;font-size:13px;font-weight:800;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.zoom-btn:active{transform:scale(.96)}
+.challenge-card{background:white;border-radius:18px;margin:14px 16px 0;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.challenge-label{font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:var(--n400);margin-bottom:8px}
+.challenge-title{font-size:16px;font-weight:800;color:var(--n800);margin-bottom:2px}
+.challenge-meta{font-size:12px;color:var(--n500);margin-bottom:10px}
+.challenge-bar{height:7px;background:var(--n100);border-radius:var(--r-pill);margin-bottom:6px}
+.challenge-fill{height:100%;background:linear-gradient(90deg,var(--mint),var(--mint-dark));border-radius:var(--r-pill);transition:width .4s}
+.challenge-footer{display:flex;align-items:center;justify-content:space-between}
+.challenge-prog{font-size:13px;font-weight:800;color:var(--mint-dark)}
+.challenge-status{font-size:11px;color:var(--n400)}
+.tree-card{background:linear-gradient(135deg,#16a34a,#15803d);border-radius:18px;margin:14px 16px 0;padding:16px;color:white}
+
+/* ════════════════════════════════════════════
+   PROGRESSO
+════════════════════════════════════════════ */
+.prog-hero{background:linear-gradient(135deg,#1d3461,#2563eb);padding:52px 22px 18px;flex-shrink:0;position:relative;overflow:hidden}
+.prog-hero::before{content:'';position:absolute;width:150px;height:150px;border-radius:50%;background:rgba(255,255,255,.07);top:-30px;right:-20px}
+.stats-3{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 16px 0}
+.prog-stat{background:white;border-radius:16px;padding:14px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.prog-stat-val{font-size:26px;font-weight:800;line-height:1;margin-bottom:4px}
+.prog-stat-lbl{font-size:10px;color:var(--n400);font-weight:600}
+.streak-card{background:linear-gradient(135deg,var(--orange),#c94e1a);border-radius:18px;margin:14px 16px 0;padding:16px;color:white}
+.streak-top{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.streak-ico{width:44px;height:44px;border-radius:14px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.streak-info-lbl{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;opacity:.7;margin-bottom:2px}
+.streak-info-title{font-size:16px;font-weight:800}
+.streak-use-btn{background:rgba(255,255,255,.25);border:1.5px solid rgba(255,255,255,.4);color:white;border-radius:var(--r-pill);padding:9px 18px;font-size:12px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;margin-left:auto;white-space:nowrap}
+.streak-desc{font-size:12px;opacity:.85;margin-bottom:12px;line-height:1.45}
+.streak-weeks{display:flex;gap:8px}
+.streak-week{flex:1;text-align:center}
+.streak-week-bar{height:5px;border-radius:var(--r-pill);margin-bottom:4px}
+.streak-week-lbl{font-size:9px;font-weight:700;opacity:.8}
+.nivel-card{background:white;border-radius:18px;margin:14px 16px 0;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.nivel-header{background:linear-gradient(135deg,#92660c,#b8860b);padding:16px}
+.nivel-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:rgba(255,255,255,.7);margin-bottom:4px}
+.nivel-name{font-size:26px;font-weight:800;color:white}
+.nivel-sub{font-size:12px;color:rgba(255,255,255,.75);margin-top:2px}
+.nivel-dots{display:flex;gap:6px;margin-top:10px}
+.nivel-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.3)}
+.nivel-dot.on{background:white}
+.nivel-body{padding:14px 16px}
+.nivel-bar-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;font-size:11px;font-weight:700;color:var(--n500)}
+.nivel-bar{height:8px;background:var(--n100);border-radius:var(--r-pill);margin-bottom:14px;overflow:hidden}
+.nivel-fill{height:100%;background:linear-gradient(90deg,#cd7f32,#b8860b);border-radius:var(--r-pill)}
+.nivel-badges{display:flex;gap:8px}
+.nivel-badge{flex:1;background:var(--n50);border-radius:14px;padding:12px 8px;text-align:center;border:2px solid transparent}
+.nivel-badge.on{background:rgba(205,127,50,.1);border-color:#cd7f32}
+.nivel-badge-ico{font-size:22px;margin-bottom:5px}
+.nivel-badge-name{font-size:10px;font-weight:700;color:var(--n700)}
+.nivel-badge-pts{font-size:9px;color:var(--n400);margin-top:2px}
+.conquistas-card{background:white;border-radius:18px;margin:14px 16px 0;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.conquistas-header{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--n100)}
+.conquistas-title{font-size:13px;font-weight:800;color:var(--n800)}
+.conquistas-link{font-size:12px;font-weight:700;color:var(--mint-dark);cursor:pointer}
+.badge-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;padding:14px 16px}
+.badge-item{display:flex;flex-direction:column;align-items:center;gap:5px}
+.badge-ico{width:52px;height:52px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:24px}
+.badge-name{font-size:9px;font-weight:700;color:var(--n600);text-align:center;line-height:1.2}
+
+
+/* ── STATS (progresso hero) ── */
+.stat{background:white;border-radius:16px;padding:14px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.stat-val{font-size:26px;font-weight:800;line-height:1;margin-bottom:4px}
+.stat-lbl{font-size:10px;color:var(--n400);font-weight:600}
+
+/* ── BUDDY / PARCEIRO ── */
+.buddy-card{background:white;border-radius:18px;margin:0 16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.buddy-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.buddy-ava{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--mint),var(--mint-dark));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:white;flex-shrink:0}
+.buddy-info{flex:1}
+.buddy-name{font-size:14px;font-weight:800;color:var(--n800)}
+.buddy-status{font-size:11px;color:var(--n400);margin-top:1px}
+.buddy-streak{text-align:center;flex-shrink:0}
+.buddy-streak-v{font-size:22px;font-weight:800;color:var(--orange);line-height:1}
+.buddy-streak-l{font-size:10px;color:var(--n400)}
+.buddy-msg{background:var(--n50);border-radius:12px;padding:10px 12px;margin-bottom:10px}
+.buddy-msg-txt{font-size:13px;color:var(--n700);font-style:italic;line-height:1.45}
+.buddy-acts{display:flex;gap:8px}
+.bact{flex:1;padding:10px;border-radius:var(--r-pill);font-size:12px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:all .15s}
+.bact:active{transform:scale(.96)}
+.bact.pri{background:var(--mint);color:white;box-shadow:0 3px 10px rgba(45,204,180,.3)}
+.bact.sec{background:var(--n100);color:var(--n600)}
+
+/* ── MENTOR / MADRINHA ── */
+.mentor-card{background:white;border-radius:18px;margin:0 16px;padding:16px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.mentor-head{display:flex;align-items:flex-start;gap:12px;margin-bottom:10px}
+.mentor-ava{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,#c2410c,var(--orange));display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800;color:white;flex-shrink:0}
+.mentor-badge{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--orange);margin-bottom:3px}
+.mentor-name{font-size:14px;font-weight:800;color:var(--n800)}
+.mentor-sub{font-size:11px;color:var(--n400);margin-top:1px}
+.mentor-quote{font-size:13px;color:var(--n700);font-style:italic;background:var(--n50);border-radius:12px;padding:10px 12px;line-height:1.45}
+
+/* ── EVENTO / ZOOM ── */
+.event-card{background:white;border-radius:18px;margin:0 16px;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.07);display:flex;align-items:center;gap:14px}
+.edate{background:linear-gradient(135deg,#2563eb,#1d4ed8);border-radius:12px;padding:10px 12px;text-align:center;flex-shrink:0;min-width:46px}
+.eday{font-size:22px;font-weight:800;color:white;line-height:1}
+.emon{font-size:10px;font-weight:700;color:rgba(255,255,255,.75);text-transform:uppercase}
+.einfo{flex:1}
+.eti{font-size:13px;font-weight:700;color:var(--n800);margin-bottom:2px}
+.esu{font-size:11px;color:var(--n400)}
+
+/* ── CHALLENGE (desafio) ── */
+.ch-head{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
+.ch-title{font-size:15px;font-weight:800;color:var(--n800);margin-bottom:2px}
+.ch-sub{font-size:12px;color:var(--n400)}
+.ch-bar{height:7px;background:var(--n100);border-radius:var(--r-pill);margin-bottom:6px;overflow:hidden}
+.ch-fill{height:100%;width:67%;background:linear-gradient(90deg,var(--mint),var(--mint-dark));border-radius:var(--r-pill)}
+.ch-foot{display:flex;align-items:center;justify-content:space-between;font-size:12px;font-weight:600;color:var(--n600)}
+
+/* ── ÁRVORE ── */
+.tree-card{background:linear-gradient(135deg,#16a34a,#15803d);border-radius:18px;margin:0 16px;padding:16px;display:flex;align-items:center;gap:14px}
+.tree-ico-wrap{width:44px;height:44px;border-radius:13px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.tree-ico-wrap svg{width:26px;height:26px;fill:white;stroke:none}
+.tree-body{flex:1}
+.tree-title{font-size:14px;font-weight:800;color:white}
+.tree-sub{font-size:11px;color:rgba(255,255,255,.7);margin-top:2px}
+.tree-count{font-size:32px;font-weight:800;color:white;flex-shrink:0}
+
+/* ── PROGRESSO: MAPA / RADAR / RISCO ── */
+.mapa-card{background:white;border-radius:18px;margin:14px 16px 0;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.mapa-header{padding:14px 16px 8px;display:flex;align-items:center;justify-content:space-between}
+.mapa-title{font-size:13px;font-weight:800;color:var(--n800)}
+.mapa-date{font-size:11px;color:var(--n400)}
+.mapa-ey{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:var(--n400);padding:0 16px 6px}
+.mapa-score-n{font-size:42px;font-weight:800;line-height:1;color:var(--mint-dark)}
+.mapa-score-l{font-size:12px;color:var(--n500);margin-top:2px}
+.mapa-inds{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 16px}
+.mapa-tags{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 14px}
+.mapa-grad-sec{padding:0 16px 14px}
+.mapa-gbar{height:10px;border-radius:var(--r-pill);background:linear-gradient(90deg,var(--red),var(--orange),var(--mint));margin:6px 0;position:relative}
+.mapa-needle{position:absolute;top:-4px;width:3px;height:18px;background:var(--n800);border-radius:2px;left:72%;transform:translateX(-50%)}
+.mapa-scale{display:flex;justify-content:space-between;font-size:9px;color:var(--n400);font-weight:600}
+.radar-card{background:white;border-radius:18px;margin:14px 16px 0;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.rc-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.rc-title{font-size:13px;font-weight:800;color:var(--n800)}
+.rc-leg{display:flex;gap:10px}
+.rcl{display:flex;align-items:center;gap:4px;font-size:10px;font-weight:600;color:var(--n500)}
+.rcl-d{width:8px;height:8px;border-radius:2px}
+.risk-bar{height:100%;background:var(--mint);border-radius:var(--r-pill);transition:height .4s}
+.risk-row{display:flex;align-items:center;gap:8px;padding:8px 0;border-bottom:1px solid var(--n50)}
+.risk-row:last-child{border-bottom:none}
+.risk-lbl{font-size:12px;font-weight:600;color:var(--n700);flex:1}
+.risk-c{height:6px;flex:2;background:var(--n100);border-radius:var(--r-pill);overflow:hidden}
+.risk-val{font-size:11px;font-weight:700;color:var(--n500);min-width:28px;text-align:right}
+.risk-sub{font-size:10px;color:var(--n400)}
+.risk-needle{height:100%;border-radius:var(--r-pill)}
+
+/* ── PROGRESSO: BCHART (barras) ── */
+.bchart-card{background:white;border-radius:18px;margin:14px 16px 0;padding:14px 16px;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.bchart-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.bchart-title{font-size:13px;font-weight:800;color:var(--n800)}
+.bchart-foot{display:flex;justify-content:space-between;margin-top:6px}
+.bday{font-size:10px;color:var(--n400);text-align:center;flex:1;font-weight:600}
+.bars-wrap{display:flex;align-items:flex-end;gap:4px;height:80px}
+.bcol{flex:1;display:flex;flex-direction:column;align-items:center;gap:4px}
+.bbar{width:100%;border-radius:6px 6px 0 0;background:var(--mint-light);transition:height .4s;min-height:4px}
+.bbar.today{background:var(--mint)}
+
+/* ── MIND (pilares mentais) ── */
+.mind-sec{padding:6px 16px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--n400)}
+.mind-row{display:flex;align-items:center;gap:10px;background:white;margin:0 16px 8px;border-radius:14px;padding:12px 14px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+.mind-name{font-size:13px;font-weight:600;color:var(--n700);flex:1}
+.mind-val{font-size:13px;font-weight:800;color:var(--mint-dark)}
+.mind-desc{font-size:11px;color:var(--n400);margin-top:1px}
+.mind-body{flex:1}
+
+/* ── SEC label ── */
+.sec{padding:16px 16px 8px;font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--n400)}
+
 /* ── LOGIN ── */
 .login-screen{position:absolute;inset:0;background:var(--white);z-index:60;display:flex;flex-direction:column;overflow:hidden}
 .login-hero{background:linear-gradient(155deg,#1d3461 0%,var(--purple) 60%,var(--mint-dark) 100%);padding:52px 32px 36px;flex-shrink:0;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center}
@@ -3011,8 +3250,151 @@ async function apiFetch(path, options) {
 }
 
 // ════════════════════════════════════════════
-// ÁGUA — controle de hidratação
+// NOTIFICAÇÕES
 // ════════════════════════════════════════════
+function openNotif() {
+  var panel = document.getElementById('notif-panel');
+  if (panel) { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+
+function closeNotif() {
+  var panel = document.getElementById('notif-panel');
+  if (panel) { panel.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+function markAllRead() {
+  document.querySelectorAll('.notif-item.unread').forEach(function(el) {
+    el.classList.remove('unread');
+  });
+  document.querySelectorAll('.notif-unread-dot').forEach(function(el) {
+    el.style.display = 'none';
+  });
+  var count = document.querySelector('.notif-count');
+  if (count) count.textContent = 'Todas lidas';
+  var dot = document.querySelector('.pl-notif-dot');
+  if (dot) dot.style.display = 'none';
+  showToastApp('✅ Todas as notificações marcadas como lidas');
+}
+
+// ════════════════════════════════════════════
+// PERFIL
+// ════════════════════════════════════════════
+function openProfile() {
+  // Atualiza nome no perfil com o usuário logado
+  if (currentUser && currentUser.name) {
+    var nameEl  = document.querySelector('#profile-panel .profile-name');
+    var avaEl   = document.querySelector('#profile-panel .profile-ava-txt');
+    var plAvaEl = document.querySelector('.pl-ava');
+    var initials = currentUser.name.split(' ').map(function(w){ return w[0]; }).slice(0,2).join('').toUpperCase();
+    if (nameEl)  nameEl.textContent  = currentUser.name;
+    if (avaEl)   avaEl.textContent   = initials;
+    if (plAvaEl) plAvaEl.textContent = initials;
+  }
+  var panel = document.getElementById('profile-panel');
+  if (panel) { panel.classList.add('open'); document.body.style.overflow = 'hidden'; }
+}
+
+function closeProfile() {
+  var panel = document.getElementById('profile-panel');
+  if (panel) { panel.classList.remove('open'); document.body.style.overflow = ''; }
+}
+
+function openSubpage(page) {
+  var titles = {
+    'dados-pessoais':  'Dados Pessoais',
+    'minha-jornada':   'Minha Jornada',
+    'conquistas':      'Minhas Conquistas',
+    'inserir-exames':  'Inserir Exames',
+    'relatorio-medico':'Relatório para Médico',
+    'apple-health':    'Apple Health / Google Fit',
+    'lembretes':       'Lembretes e Notificações',
+    'aparencia':       'Aparência',
+    'privacidade':     'Privacidade e Dados',
+    'ajuda':           'Ajuda e Suporte',
+  };
+  var contents = {
+    'dados-pessoais': '<div style="padding:20px"><div style="font-size:13px;font-weight:700;color:var(--n700);margin-bottom:4px">Nome completo</div><input style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid var(--n200);font-size:14px;font-family:Inter,sans-serif;color:var(--n700);outline:none;margin-bottom:14px" value="Ana Beatriz Silva"><div style="font-size:13px;font-weight:700;color:var(--n700);margin-bottom:4px">Data de nascimento</div><input style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid var(--n200);font-size:14px;font-family:Inter,sans-serif;color:var(--n700);outline:none;margin-bottom:14px" value="15/03/1992"><div style="font-size:13px;font-weight:700;color:var(--n700);margin-bottom:4px">WhatsApp</div><input style="width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid var(--n200);font-size:14px;font-family:Inter,sans-serif;color:var(--n700);outline:none;margin-bottom:20px" value="(11) 99999-9999"><button onclick="showToastApp(\'✅ Dados salvos!\')" style="width:100%;padding:13px;border-radius:50px;background:var(--mint);color:white;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:Inter,sans-serif">Salvar alterações</button></div>',
+
+    'minha-jornada': '<div style="padding:20px"><div style="background:linear-gradient(135deg,var(--mint-light),#d0f5ef);border-radius:16px;padding:16px;margin-bottom:14px"><div style="font-size:11px;font-weight:700;color:var(--mint-dark);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px">Fase atual</div><div style="font-size:20px;font-weight:800;color:var(--mint-dark)">Fase Crescimento · Mês 4</div><div style="font-size:12px;color:var(--mint-dark);opacity:.8;margin-top:4px">Programa de 12 meses · 8 restantes</div></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px"><div style="background:white;border-radius:14px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)"><div style="font-size:24px;font-weight:800;color:var(--orange)">18</div><div style="font-size:11px;color:var(--n400);margin-top:2px">Dias na sequência</div></div><div style="background:white;border-radius:14px;padding:14px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)"><div style="font-size:24px;font-weight:800;color:var(--mint-dark)">1.840</div><div style="font-size:11px;color:var(--n400);margin-top:2px">Pontos totais</div></div></div><div style="background:white;border-radius:14px;padding:14px;box-shadow:0 2px 8px rgba(0,0,0,.06)"><div style="font-size:13px;font-weight:700;color:var(--n700);margin-bottom:8px">Meta do mês</div><div style="font-size:13px;color:var(--n600);line-height:1.5">Caminhar 5x por semana e dormir antes das 23h por 30 dias consecutivos.</div></div></div>',
+
+    'conquistas': '<div style="padding:20px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px">' + [
+      ['🥗','Nutrição\nCertificada','Completou 30 dias\nde cardápio'],
+      ['💪','Força Total','15 treinos\nconcluídos'],
+      ['😴','Sono Perfeito','10 dias com\n8h de sono'],
+      ['🧘','Mente Sã','20 dias de\nmeditação'],
+      ['💧','Hidratação+','Meta de água\n7 dias seguidos'],
+      ['⭐','Sequência 18','18 dias\nconsecutivos'],
+      ['🏆','Top Paciente','Aderência acima\nde 80%'],
+      ['🌱','Raízes Firmes','Completou\nFase 1'],
+      ['🔥','Em Chamas','5 dias perfeitos\nseguidos'],
+    ].map(function(b){ return '<div style="background:white;border-radius:14px;padding:12px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)"><div style="font-size:28px;margin-bottom:6px">'+b[0]+'</div><div style="font-size:10px;font-weight:700;color:var(--n700);margin-bottom:3px">'+b[1].replace('\n','<br>')+'</div><div style="font-size:9px;color:var(--n400)">'+b[2].replace('\n','<br>')+'</div></div>'; }).join('') + '</div>',
+
+    'inserir-exames': '<div style="padding:20px"><div style="font-size:12px;color:var(--n500);margin-bottom:16px;line-height:1.5">Insira os resultados dos seus exames para que sua equipe médica acompanhe sua evolução.</div>' + [
+      ['Glicemia em jejum','mg/dL'],['HbA1c','%'],['Colesterol total','mg/dL'],
+      ['LDL','mg/dL'],['HDL','mg/dL'],['Triglicerídeos','mg/dL'],['Vitamina D','ng/mL'],['TSH','mUI/L'],
+    ].map(function(e){ return '<div style="margin-bottom:12px"><div style="font-size:12px;font-weight:700;color:var(--n700);margin-bottom:4px">'+e[0]+'</div><div style="display:flex;gap:8px;align-items:center"><input style="flex:1;padding:10px 13px;border-radius:12px;border:1.5px solid var(--n200);font-size:13px;font-family:Inter,sans-serif;outline:none" placeholder="Resultado..."><span style="font-size:11px;color:var(--n400);white-space:nowrap">'+e[1]+'</span></div></div>'; }).join('') + '<button onclick="showToastApp(\'✅ Exames enviados para sua equipe!\')" style="width:100%;padding:13px;border-radius:50px;background:var(--mint);color:white;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:Inter,sans-serif;margin-top:8px">Enviar para equipe</button></div>',
+
+    'relatorio-medico': '<div style="padding:20px;text-align:center"><div style="font-size:48px;margin-bottom:12px">📄</div><div style="font-size:16px;font-weight:800;color:var(--n800);margin-bottom:6px">Relatório de Evolução</div><div style="font-size:13px;color:var(--n500);margin-bottom:24px;line-height:1.5">Gere um PDF completo com sua evolução, exames, aderência e feedbacks da equipe.</div><button onclick="showToastApp(\'📄 PDF gerado! Compartilhe com seu médico.\')" style="width:100%;padding:13px;border-radius:50px;background:var(--mint);color:white;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:Inter,sans-serif;margin-bottom:10px">Gerar PDF</button><button onclick="showToastApp(\'✉️ Enviado por e-mail!\')" style="width:100%;padding:13px;border-radius:50px;background:white;color:var(--mint-dark);font-size:14px;font-weight:700;border:2px solid var(--mint);cursor:pointer;font-family:Inter,sans-serif">Enviar por e-mail</button></div>',
+
+    'apple-health': '<div style="padding:20px"><div style="background:var(--mint-light);border-radius:16px;padding:16px;margin-bottom:16px;display:flex;align-items:center;gap:12px"><div style="font-size:32px">✅</div><div><div style="font-size:14px;font-weight:700;color:var(--mint-dark)">Conectado</div><div style="font-size:12px;color:var(--mint-dark);opacity:.8">Sincronizando passos, sono e frequência cardíaca</div></div></div><div style="font-size:13px;font-weight:700;color:var(--n700);margin-bottom:12px">Dados sincronizados</div>' + [['👟','Passos diários','8.247 passos hoje'],['😴','Sono','7h 42min ontem'],['❤️','Freq. cardíaca','72 bpm média'],['🔥','Calorias ativas','420 kcal hoje']].map(function(d){ return '<div style="display:flex;align-items:center;gap:12px;padding:12px;background:white;border-radius:12px;margin-bottom:8px;box-shadow:0 2px 6px rgba(0,0,0,.04)"><div style="font-size:22px">'+d[0]+'</div><div><div style="font-size:13px;font-weight:600;color:var(--n700)">'+d[1]+'</div><div style="font-size:12px;color:var(--n400)">'+d[2]+'</div></div></div>'; }).join('') + '</div>',
+
+    'lembretes': '<div style="padding:20px">' + [
+      ['☀️','Café da manhã','07:00','Lembrete de refeição'],
+      ['🚶','Atividade física','17:30','Lembrete de exercício'],
+      ['📵','Blue light off','21:30','Preparar para dormir'],
+      ['😴','Hora de dormir','22:30','Meta de sono'],
+      ['💧','Beber água','10:00 / 15:00','Hidratação'],
+    ].map(function(r){ return '<div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--n100)"><div style="font-size:20px;width:32px;text-align:center">'+r[0]+'</div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--n700)">'+r[1]+'</div><div style="font-size:11px;color:var(--n400)">'+r[2]+' · '+r[3]+'</div></div><div style="width:44px;height:26px;border-radius:50px;background:var(--mint);position:relative;cursor:pointer;flex-shrink:0"><div style="position:absolute;top:3px;right:3px;width:20px;height:20px;border-radius:50%;background:white;box-shadow:0 1px 3px rgba(0,0,0,.2)"></div></div></div>'; }).join('') + '</div>',
+
+    'ajuda': '<div style="padding:20px"><div style="font-size:14px;font-weight:700;color:var(--n700);margin-bottom:12px">Perguntas frequentes</div>' + [
+      ['Como alterar meu cardápio?','Entre em contato com Juan Carlos pelo WhatsApp ou aguarde a próxima consulta.'],
+      ['Como ganhar mais pontos?','Complete todos os hábitos do dia, envie fotos das refeições e mantenha a sequência!'],
+      ['Como agendar uma consulta?','Use o botão de WhatsApp na tela principal para falar com sua equipe.'],
+      ['Meus dados são seguros?','Sim. Todos os dados são criptografados e visíveis apenas para você e sua equipe.'],
+    ].map(function(q){ return '<div style="margin-bottom:12px;background:white;border-radius:14px;padding:14px;box-shadow:0 2px 6px rgba(0,0,0,.04)"><div style="font-size:13px;font-weight:700;color:var(--n700);margin-bottom:5px">'+q[0]+'</div><div style="font-size:12px;color:var(--n500);line-height:1.5">'+q[1]+'</div></div>'; }).join('') + '<button onclick="showToastApp(\'💬 Abrindo WhatsApp...\')" style="width:100%;padding:13px;border-radius:50px;background:#25d366;color:white;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:Inter,sans-serif;margin-top:4px">💬 Falar com suporte</button></div>',
+
+    'aparencia': '<div style="padding:20px"><div style="font-size:14px;font-weight:700;color:var(--n700);margin-bottom:16px">Tema do aplicativo</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:24px"><div onclick="showToastApp(\'☀️ Tema claro ativado!\')" style="border:2.5px solid var(--mint);border-radius:16px;padding:16px;text-align:center;cursor:pointer;background:white"><div style="font-size:28px;margin-bottom:6px">☀️</div><div style="font-size:13px;font-weight:700;color:var(--n700)">Claro</div><div style="font-size:10px;color:var(--mint-dark);margin-top:3px">✓ Ativo</div></div><div onclick="showToastApp(\'🌙 Tema escuro em breve!\')" style="border:2px solid var(--n200);border-radius:16px;padding:16px;text-align:center;cursor:pointer;background:var(--n50)"><div style="font-size:28px;margin-bottom:6px">🌙</div><div style="font-size:13px;font-weight:700;color:var(--n500)">Escuro</div><div style="font-size:10px;color:var(--n400);margin-top:3px">Em breve</div></div></div></div>',
+
+    'privacidade': '<div style="padding:20px"><div style="font-size:13px;color:var(--n500);margin-bottom:16px;line-height:1.5;background:var(--n50);border-radius:12px;padding:13px">Seus dados são protegidos com criptografia de ponta a ponta e compartilhados apenas com sua equipe de saúde.</div>' + [
+      ['📷','Acesso à câmera','Para envio de fotos das refeições',true],
+      ['📍','Localização','Não utilizada',false],
+      ['🔔','Notificações','Lembretes e atualizações',true],
+      ['💾','Backup automático','Sincronização de dados',true],
+    ].map(function(p){ return '<div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid var(--n100)"><div style="font-size:20px;width:32px;text-align:center">'+p[0]+'</div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:var(--n700)">'+p[1]+'</div><div style="font-size:11px;color:var(--n400)">'+p[2]+'</div></div><div style="width:44px;height:26px;border-radius:50px;background:'+(p[3]?'var(--mint)':'var(--n200)')+';position:relative;cursor:pointer;flex-shrink:0"><div style="position:absolute;top:3px;'+(p[3]?'right':'left')+':3px;width:20px;height:20px;border-radius:50%;background:white;box-shadow:0 1px 3px rgba(0,0,0,.2)"></div></div></div>'; }).join('') + '</div>',
+  };
+
+  var title   = titles[page]   || 'Configurações';
+  var content = contents[page] || '<div style="padding:40px;text-align:center;color:var(--n400)">Em desenvolvimento...</div>';
+
+  // Create/reuse subpage overlay
+  var sub = document.getElementById('subpage-overlay');
+  if (!sub) {
+    sub = document.createElement('div');
+    sub.id = 'subpage-overlay';
+    sub.style.cssText = 'position:fixed;inset:0;background:var(--bg);z-index:100;display:flex;flex-direction:column;transform:translateX(100%);transition:transform .28s cubic-bezier(.4,0,.2,1);overflow:hidden';
+    document.body.appendChild(sub);
+  }
+
+  sub.innerHTML =
+    '<div style="background:linear-gradient(135deg,#1d3461,var(--purple));padding:52px 22px 18px;flex-shrink:0">' +
+      '<div style="display:flex;align-items:center;gap:12px">' +
+        '<div onclick="document.getElementById(\'subpage-overlay\').style.transform=\'translateX(100%)\'" style="width:36px;height:36px;border-radius:12px;background:rgba(255,255,255,.2);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0">' +
+          '<svg viewBox="0 0 16 16" style="width:16px;height:16px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round"><polyline points="10,4 6,8 10,12"/></svg>' +
+        '</div>' +
+        '<div style="font-size:18px;font-weight:800;color:white">' + title + '</div>' +
+      '</div>' +
+    '</div>' +
+    '<div style="flex:1;overflow-y:auto;scrollbar-width:none">' + content + '</div>';
+
+  requestAnimationFrame(function() {
+    sub.style.transform = 'translateX(0)';
+  });
+}
+
+// Fechar notif/perfil com swipe (básico)
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') { closeNotif(); closeProfile(); }
+});
 var _aguaAtual = 1400;
 var _aguaMeta  = 2500;
 
