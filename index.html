@@ -935,17 +935,17 @@ body{
         <div class="turno-name"><div class="turno-pill" style="background:var(--orange)"></div>Manhã</div>
         <div class="turno-ct" id="ct-manha">0 / 3 concluídas</div>
       </div>
-      <div class="task" onclick="checkTask(this,'manha')" style="cursor:pointer">
+      <div class="task" data-task-id="manha_0" onclick="checkTask(this,'manha')" style="cursor:pointer">
         <div class="task-ck pend"></div>
         <div class="task-body"><div class="task-name">Acordar no mesmo horário</div><div class="task-meta">Sono</div></div>
         <div class="task-time">6h</div><div class="task-pts">+10</div>
       </div>
-      <div class="task" onclick="checkTask(this,'manha')" style="cursor:pointer">
+      <div class="task" data-task-id="manha_1" onclick="checkTask(this,'manha')" style="cursor:pointer">
         <div class="task-ck pend"></div>
         <div class="task-body"><div class="task-name">Café da manhã proteico</div><div class="task-meta">Alimentação</div></div>
         <div class="task-time">7h</div><div class="task-pts">+15</div>
       </div>
-      <div class="task" onclick="checkTask(this,'manha')" style="cursor:pointer">
+      <div class="task" data-task-id="manha_2" onclick="checkTask(this,'manha')" style="cursor:pointer">
         <div class="task-ck pend"></div>
         <div class="task-body"><div class="task-name">Meditação 10 min</div><div class="task-meta">Mente</div></div>
         <div class="task-time">7h30</div><div class="task-pts">+15</div>
@@ -960,12 +960,12 @@ body{
         <div class="turno-name"><div class="turno-pill" style="background:var(--mint)"></div>Tarde</div>
         <div class="turno-ct" id="ct-tarde">0 / 2 concluídas</div>
       </div>
-      <div class="task" onclick="checkTask(this,'tarde')" style="cursor:pointer">
+      <div class="task" data-task-id="tarde_0" onclick="checkTask(this,'tarde')" style="cursor:pointer">
         <div class="task-ck pend"></div>
         <div class="task-body"><div class="task-name">Almoço com folhas verdes</div><div class="task-meta">Alimentação</div></div>
         <div class="task-time">12h</div><div class="task-pts">+12</div>
       </div>
-      <div class="task" onclick="checkTask(this,'tarde')" style="cursor:pointer">
+      <div class="task" data-task-id="tarde_1" onclick="checkTask(this,'tarde')" style="cursor:pointer">
         <div class="task-ck pend"></div>
         <div class="task-body"><div class="task-name">Caminhada zona 2 · 30 min</div><div class="task-meta">Exercício</div></div>
         <div class="task-time">17h</div><div class="task-pts">+20</div>
@@ -980,12 +980,12 @@ body{
         <div class="turno-name"><div class="turno-pill" style="background:var(--n300)"></div>Noite</div>
         <div class="turno-ct" id="ct-noite">0 / 2 concluídas</div>
       </div>
-      <div class="task" onclick="checkTask(this,'noite')" style="cursor:pointer">
+      <div class="task" data-task-id="noite_0" onclick="checkTask(this,'noite')" style="cursor:pointer">
         <div class="task-ck pend"></div>
         <div class="task-body"><div class="task-name">Jantar leve antes das 20h</div><div class="task-meta">Alimentação</div></div>
         <div class="task-time">19h30</div><div class="task-pts">+10</div>
       </div>
-      <div class="task" onclick="checkTask(this,'noite')" style="cursor:pointer">
+      <div class="task" data-task-id="noite_1" onclick="checkTask(this,'noite')" style="cursor:pointer">
         <div class="task-ck pend"></div>
         <div class="task-body"><div class="task-name">Blue light off · dormir 22h30</div><div class="task-meta">Sono</div></div>
         <div class="task-time">22h</div><div class="task-pts">+18</div>
@@ -2366,6 +2366,14 @@ const DEMO_USERS = [
 ];
 let currentUser = null;
 
+
+// Acorda o servidor Render antes do login (free tier hiberna)
+function wakeUpServer() {
+  fetch(API_URL + '/health').catch(function(){});
+}
+// Pinga ao carregar a página
+setTimeout(wakeUpServer, 500);
+
 function doLogin() {
   var nome  = (document.getElementById('login-nome')||{value:''}).value.trim();
   var nasc  = (document.getElementById('login-nasc')||{value:''}).value.trim();
@@ -2394,12 +2402,15 @@ function doLogin() {
   }).catch(function(e) {
     btn.disabled = false; btn.textContent = 'Entrar';
     var msg = (e && e.error) ? e.error : '';
-    if (msg === 'Nome não encontrado. Verifique com seu profissional.') {
+    if (msg.indexOf('não encontrado') >= 0 || msg.indexOf('not found') >= 0) {
       err.textContent = 'Nome não encontrado. Verifique com seu nutricionista.';
-    } else if (msg === 'Data de nascimento incorreta.') {
+    } else if (msg.indexOf('nascimento') >= 0 || msg.indexOf('incorreta') >= 0) {
       err.textContent = 'Data de nascimento incorreta.';
+    } else if (msg.indexOf('suspenso') >= 0 || msg.indexOf('expirou') >= 0) {
+      err.textContent = msg;
     } else {
-      err.textContent = 'Não foi possível conectar. Verifique sua internet e tente novamente.';
+      // Provavelmente o servidor está acordando (Render free tier)
+      err.textContent = 'Servidor iniciando... Aguarde 30 segundos e tente novamente.';
     }
     err.classList.add('show');
   });
@@ -3355,6 +3366,247 @@ async function apiFetch(path, options) {
   }
   if (!resp.ok) throw await resp.json().catch(function(){ return { error: 'Erro' }; });
   return resp.json();
+}
+
+// ════════════════════════════════════════════
+// SISTEMA DE PERSISTÊNCIA — salva tudo do paciente
+// ════════════════════════════════════════════
+
+var APP_STATE = {
+  pontos: 0,
+  sequencia: 0,
+  ultimoDia: null,
+  agua: 1400,
+  aguaMeta: 2500,
+  refeicoes: {},    // { 'cafe-2026-05-31': true }
+  habitos: {},      // { 'hab-manha-0-2026-05-31': true }
+  exercicios: {},   // { 'exerc-0-2026-05-31': true }
+  habitosMEV: {},   // { 'mev-sono-2026-05-31': true }
+};
+
+function getStateKey() {
+  var uid = currentUser ? currentUser.id || currentUser.name : 'guest';
+  return 'r360_state_' + uid;
+}
+
+function saveState() {
+  try {
+    APP_STATE.agua = _aguaAtual;
+    localStorage.setItem(getStateKey(), JSON.stringify(APP_STATE));
+  } catch(e) {}
+}
+
+function loadState() {
+  try {
+    var raw = localStorage.getItem(getStateKey());
+    if (raw) {
+      var saved = JSON.parse(raw);
+      APP_STATE = Object.assign(APP_STATE, saved);
+      _aguaAtual = APP_STATE.agua || 1400;
+    }
+    // Verifica se é um novo dia — reseta itens diários
+    var hoje = new Date().toDateString();
+    if (APP_STATE.ultimoDia !== hoje) {
+      // Novo dia — incrementa sequência se completou ontem
+      if (APP_STATE.ultimoDia) APP_STATE.sequencia = (APP_STATE.sequencia || 0) + 1;
+      APP_STATE.ultimoDia = hoje;
+      APP_STATE.agua = 0;
+      _aguaAtual = 0;
+      saveState();
+    }
+  } catch(e) {}
+}
+
+function todayKey() {
+  return new Date().toISOString().split('T')[0];
+}
+
+// ── Tarefas / hábitos do planner ─────────────────────
+function checkTask(btn, periodo) {
+  var card    = btn.closest('.task-item') || btn.closest('.pl-task');
+  var taskId  = btn.dataset.taskId || (periodo + '_' + Array.from(btn.closest('.task-list, .pl-tasks') ? btn.closest('.task-list, .pl-tasks').children : []).indexOf(card));
+  var key     = 'hab_' + taskId + '_' + todayKey();
+  var done    = APP_STATE.habitos[key];
+
+  if (done) {
+    // Desmarcar
+    delete APP_STATE.habitos[key];
+    btn.classList.remove('task-done');
+    if (card) card.classList.remove('done');
+    APP_STATE.pontos = Math.max(0, (APP_STATE.pontos || 0) - 10);
+  } else {
+    // Marcar
+    APP_STATE.habitos[key] = true;
+    btn.classList.add('task-done');
+    if (card) card.classList.add('done');
+    APP_STATE.pontos = (APP_STATE.pontos || 0) + 10;
+    showToastApp('✅ Hábito registrado! +10 pts');
+  }
+
+  atualizarProgresso();
+  saveState();
+}
+
+// ── Restaurar estado do dia ───────────────────────────
+function restaurarEstadoDia() {
+  var hoje = todayKey();
+
+  // Restaurar água
+  var valEl  = document.getElementById('wh-val');
+  var fillEl = document.getElementById('wh-fill');
+  if (valEl && fillEl) {
+    var pct = Math.round((_aguaAtual / _aguaMeta) * 100);
+    valEl.innerHTML  = _aguaAtual.toLocaleString('pt-BR') + '<span style="font-size:11px;opacity:.6"> / ' + _aguaMeta.toLocaleString('pt-BR') + 'ml</span>';
+    fillEl.style.width = pct + '%';
+  }
+
+  // Restaurar hábitos marcados
+  document.querySelectorAll('[data-task-id]').forEach(function(btn) {
+    var key = 'hab_' + btn.dataset.taskId + '_' + hoje;
+    if (APP_STATE.habitos[key]) {
+      btn.classList.add('task-done');
+      var card = btn.closest('.task-item, .pl-task');
+      if (card) card.classList.add('done');
+    }
+  });
+
+  // Restaurar refeições
+  document.querySelectorAll('.mc-btn.primary[data-meal-id]').forEach(function(btn) {
+    var key = 'meal_' + btn.dataset.mealId + '_' + hoje;
+    if (APP_STATE.refeicoes[key]) {
+      btn.innerHTML = '<svg viewBox="0 0 16 16"><polyline points="2,8 6,12 14,4"/></svg>Concluída ✓';
+      btn.style.background = '#16a34a';
+      btn.dataset.done = '1';
+      var dot = btn.closest('.meal-card') ? btn.closest('.meal-card').querySelector('.mc-dot') : null;
+      if (dot) dot.style.background = '#16a34a';
+    }
+  });
+
+  // Atualizar pontos na UI
+  atualizarProgresso();
+}
+
+// ── Atualizar pontos e progresso na UI ───────────────
+function atualizarProgresso() {
+  var pts = APP_STATE.pontos || 0;
+  var seq = APP_STATE.sequencia || 0;
+
+  // Stats na aba progresso
+  var statPts = document.getElementById('stat-pontos');
+  var statSeq = document.getElementById('stat-sequencia');
+  if (statPts) statPts.textContent = pts.toLocaleString('pt-BR');
+  if (statSeq) statSeq.textContent = seq;
+
+  // Hero card do planner
+  var habHoje = Object.keys(APP_STATE.habitos).filter(function(k) { return k.endsWith(todayKey()); }).length;
+  var meta = 7;
+  var pct  = Math.min(100, Math.round((habHoje / meta) * 100));
+  var phcMeta  = document.querySelector('.phc-meta');
+  if (phcMeta) phcMeta.innerHTML = '<b>' + habHoje + ' de ' + meta + '</b> tarefas &nbsp;·&nbsp; <b>+' + (habHoje*10) + ' pts</b>';
+
+  // Círculo de progresso
+  var circle = document.querySelector('.phc-circle-fill, circle[stroke="white"][stroke-width="5"]');
+  if (circle) {
+    var r = 24, circ = 2 * Math.PI * r;
+    circle.style.strokeDashoffset = circ - (pct / 100) * circ;
+  }
+
+  saveState();
+}
+
+// ── Override marcarRefeicao para salvar ───────────────
+var _origMarcarRefeicao = typeof marcarRefeicao !== 'undefined' ? marcarRefeicao : null;
+function marcarRefeicao(btn) {
+  var card   = btn.closest('.meal-card');
+  var mealId = btn.dataset.mealId || (card ? card.dataset.mealId || card.id : 'meal_' + Date.now());
+  var key    = 'meal_' + mealId + '_' + todayKey();
+  var already = btn.dataset.done === '1';
+
+  if (already) {
+    btn.innerHTML = '<svg viewBox="0 0 16 16" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round"><polyline points="2,8 6,12 14,4"/></svg>Marcar consumido';
+    btn.style.background = 'var(--mint)';
+    btn.style.boxShadow  = '';
+    var dot = card ? card.querySelector('.mc-dot') : null;
+    if (dot) dot.style.background = 'var(--n200)';
+    btn.dataset.done = '0';
+    delete APP_STATE.refeicoes[key];
+  } else {
+    btn.innerHTML = '<svg viewBox="0 0 16 16" style="width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round"><polyline points="2,8 6,12 14,4"/></svg>Concluída ✓';
+    btn.style.background = '#16a34a';
+    btn.style.boxShadow  = '0 3px 12px rgba(22,163,74,.3)';
+    var dot2 = card ? card.querySelector('.mc-dot') : null;
+    if (dot2) { dot2.style.background = '#16a34a'; dot2.style.boxShadow = '0 0 0 3px rgba(22,163,74,.2)'; }
+    btn.dataset.done = '1';
+    APP_STATE.refeicoes[key] = true;
+    APP_STATE.pontos = (APP_STATE.pontos || 0) + 12;
+    showToastApp('✅ Refeição registrada! +12 pts');
+    atualizarProgresso();
+  }
+  saveState();
+}
+
+// ── Override addAgua para salvar ──────────────────────
+var _origAddAgua = typeof addAgua !== 'undefined' ? addAgua : null;
+function addAgua(ml) {
+  _aguaAtual = Math.min(_aguaAtual + ml, _aguaMeta);
+  var pct    = Math.round((_aguaAtual / _aguaMeta) * 100);
+  var valEl  = document.getElementById('wh-val');
+  var fillEl = document.getElementById('wh-fill');
+  if (valEl)  valEl.innerHTML = _aguaAtual.toLocaleString('pt-BR') + '<span style="font-size:11px;opacity:.6"> / ' + _aguaMeta.toLocaleString('pt-BR') + 'ml</span>';
+  if (fillEl) { fillEl.style.transition = 'width .4s cubic-bezier(.4,0,.2,1)'; fillEl.style.width = pct + '%'; }
+  if (_aguaAtual >= _aguaMeta) {
+    APP_STATE.pontos = (APP_STATE.pontos || 0) + 15;
+    showToastApp('🎉 Meta de hidratação atingida! +15 pts');
+  } else {
+    showToastApp('+' + ml + 'ml registrado · ' + pct + '% da meta');
+  }
+  APP_STATE.agua = _aguaAtual;
+  saveState();
+}
+
+// ── Exercícios: marcar como feito ─────────────────────
+function marcarExercicio(btn, id) {
+  var key  = 'exerc_' + id + '_' + todayKey();
+  var done = APP_STATE.exercicios[key];
+  if (done) {
+    delete APP_STATE.exercicios[key];
+    btn.textContent = 'Continuar treino';
+    btn.style.background = 'var(--purple)';
+  } else {
+    APP_STATE.exercicios[key] = true;
+    btn.textContent = '✓ Concluído';
+    btn.style.background = '#16a34a';
+    APP_STATE.pontos = (APP_STATE.pontos || 0) + 20;
+    showToastApp('💪 Treino concluído! +20 pts');
+    atualizarProgresso();
+  }
+  saveState();
+}
+
+// ── Hábitos MEV ───────────────────────────────────────
+function toggleMEV(btn, habitoId) {
+  var key  = 'mev_' + habitoId + '_' + todayKey();
+  var done = APP_STATE.habitosMEV[key];
+  var icon = btn.querySelector('.mev-check');
+  if (done) {
+    delete APP_STATE.habitosMEV[key];
+    if (icon) { icon.style.background = 'var(--n100)'; icon.innerHTML = ''; }
+    btn.classList.remove('mev-done');
+  } else {
+    APP_STATE.habitosMEV[key] = true;
+    if (icon) { icon.style.background = 'var(--mint)'; icon.innerHTML = '<svg viewBox="0 0 12 12" style="width:10px;height:10px;stroke:white;fill:none;stroke-width:2.5;stroke-linecap:round"><polyline points="2,6 5,9 10,3"/></svg>'; }
+    btn.classList.add('mev-done');
+    APP_STATE.pontos = (APP_STATE.pontos || 0) + 8;
+    showToastApp('🌱 Hábito MEV registrado! +8 pts');
+    atualizarProgresso();
+  }
+  saveState();
+}
+
+// ── Inicializar ao entrar no app ──────────────────────
+function inicializarPersistencia() {
+  loadState();
+  setTimeout(restaurarEstadoDia, 300);
 }
 
 // ════════════════════════════════════════════
